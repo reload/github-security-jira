@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+
+    ghsec-jira:
+      environment:
+        # Repo name (normally set automatically by the action) eg.
+        # 'reload/github-security-jira'.
+        GITHUB_REPOSITORY: reload/github-security-jira
+        # In repos, this is the 'GitHubSecurityToken' secret.
+        GH_SECURITY_TOKEN: github_pat
+        # In repos, this is the 'JiraApiToken' secret.
+        JIRA_TOKEN: jira_api_token
+        JIRA_HOST: https://foo.atlassian.net
+        JIRA_USER: someuser@reload.dk
+        JIRA_PROJECT: TEST
+        JIRA_ISSUE_TYPE: Bug
+        JIRA_WATCHERS: |-
+          someuser@reload.dk
+          someotheruser@reload.dk
+        JIRA_RESTRICTED_GROUP: Developers
+        JIRA_RESTRICTED_COMMENT: |-
+          Remember to evaluate severity here and set ticket priority.
+          Check out the guide [in our wiki|https://foo.atlassian.net/wiki/]!

@@ -1,0 +1,17 @@
+{
+    "name": "reload/github-security-jira",
+    "description": "Create Jira tickets for GitHub security alerts",
+    "license": "MIT",
+    "require": {
+        "php": ">=7.2.0",
+        "lesstif/php-jira-rest-client": "^1",
+        "softonic/graphql-client": "^1.2",
+        "symfony/console": "^4",
+        "symfony/yaml": "^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "GitHubSecurityJira\\": "src/"
+        }
+    }
+}

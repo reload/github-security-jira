@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+
+    ghsec-jira:
+      build: .
+      volumes:
+        - $PWD:/opt/ghsec-jira
+
+    # For local development, use Composer via 'docker-compose run --rm composer
+    # install'.
+    composer:
+      image: composer:1.9
+      volumes:
+        - $PWD:/app
