@@ -8,7 +8,7 @@
         "lesstif/php-jira-rest-client": "^1",
         "symfony/dependency-injection": "3.4.9",
         "symfony/yaml": "^5.0",
-        "robrichards/xmlseclibs": "3.0.3"
+        "robrichards/xmlseclibs": "3.0.4"
     },
     "autoload": {
         "psr-4": {
