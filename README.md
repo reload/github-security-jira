@@ -32,7 +32,7 @@ It has some required and some optional settings, which are passed to the action 
 - `JIRA_RESTRICTED_GROUP`: If set, the action will add a restricted comment to the ticket, viewable by only this Jira group. (*Optional*)
 - `JIRA_RESTRICTED_COMMENT`: The comment to post. Use the YAML multiline operator for adding linebreaks to the comment. (*Optional, but required if group is set*)
 
-Here is an example setup which runs this action every 15 mins.
+Here is an example setup which runs this action every 6 hours.
 
 ```yaml
 name: GitHub Security Alerts for Jira
