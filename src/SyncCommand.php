@@ -73,92 +73,53 @@ class SyncCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
 
-        $jira_host = getenv('JIRA_HOST');
-        $jira_user = getenv('JIRA_USER');
-        $jira_password = getenv('JIRA_TOKEN');
-        $jira_project = getenv('JIRA_PROJECT');
-
-        $github_repo = getenv('GITHUB_REPOSITORY');
-
-        $issue_type = getenv('JIRA_ISSUE_TYPE');
-
-        $watchers = [];
-        if (is_string(getenv('JIRA_WATCHERS'))) {
-            $watchers = explode("\n", getenv('JIRA_WATCHERS')) ?? [];
-        }
-
-        $res_group = getenv('JIRA_RESTRICTED_GROUP');
-        $res_comment = getenv('JIRA_RESTRICTED_COMMENT');
-
         // Fetch alert data from GitHub.
         $alerts = $this->fetchAlertData();
         if (empty($alerts)) {
-            $this->logLine($output, 'No alerts found.');
+            $this->log($output, 'No alerts found.');
         }
+
+        $alertsFound = [];
 
         // Go through each alert and create a Jira issue if one does not exist.
         foreach ($alerts as $alert) {
-            $package = $alert['securityVulnerability']['package']['name'];
-            $safeVersion = $alert['securityVulnerability']['firstPatchedVersion']['identifier'];
-            $vulnerableVersionRange = $alert['securityVulnerability']['vulnerableVersionRange'];
+            $issue = new SecurityAlertIssue($alert);
 
-            $issue = new JiraIssue(
-                $jira_host,
-                $jira_user,
-                $jira_password,
-                $jira_project,
-                $github_repo,
-                $package,
-                $safeVersion,
-                $vulnerableVersionRange
-            );
+            $existingKey = $issue->exists();
 
-            $issue->setField('severity', $alert['securityVulnerability']['severity'] ?? '');
-            $issue->setField('ecosystem', $alert['securityVulnerability']['package']['ecosystem'] ?? '');
-            $issue->setField('advisory_description', $alert['securityVulnerability']['advisory']['description'] ?? '');
-            $issue->setField('manifest_path', $alert['vulnerableManifestPath']);
-            foreach ($alert['securityVulnerability']['advisory']['references'] as $ref) {
-                if (!empty($ref['url'])) {
-                    $issue->addField('references', $ref['url']);
-                }
+            if (!is_null($existingKey)) {
+                $this->log($output, "Existing issue {$existingKey} covers {$issue->uniqueId()}.");
+            } elseif (!$input->getOption('dry-run')) {
+                $key = $issue->ensure();
+                $this->log($output, "Created issue {$key} for {$issue->uniqueId()}.");
+            } else {
+                $this->log($output, "Would have created an issue for {$issue->uniqueId()} if not a dry run.");
             }
 
-            if (!empty($issue_type)) {
-                $issue->setField('issue_type', $issue_type);
-            }
-            $issue->setField('watchers', $watchers);
-            $issue->setField('restricted_group', $res_group ?? '');
-            $issue->setField('restricted_comment', $res_comment ?? []);
+            $alertsFound[] = $issue->uniqueId();
+        }
 
-            $timestamp = gmdate(DATE_ISO8601);
-            $this->log($output, "{$timestamp} - {$jira_project} - {$package}:{$vulnerableVersionRange} - ");
+        $pull_requests = $this->fetchPullRequestData();
 
-            // Determine whether there is an issue for this alert already.
-            try {
-                $key = $issue->existingIssue();
-            } catch (\Throwable $t) {
-                $this->logLine($output, "ERROR ACCESSING JIRA: {$t->getMessage()}.");
-                exit(1);
-            }
-            if ($key) {
-                $this->logLine($output, "Existing issue found: {$key}.");
+        foreach ($pull_requests as $pull_request) {
+            $issue = new PullRequestIssue($pull_request['node']);
+
+            if (in_array($issue->uniqueId(), $alertsFound)) {
                 continue;
             }
 
-            // Create the Jira issue.
-            if (empty($input->getOption('dry-run'))) {
-                $key = $issue->create();
+            $existingKey = $issue->exists();
 
-                // Issue creation failed. Bail out.
-                if (empty($key)) {
-                    $this->logLine($output, 'ERROR CREATING ISSUE.');
-                    exit(1);
-                }
-                $this->logLine($output, "Created issue {$key}");
+            if (!is_null($existingKey)) {
+                $this->log($output, "Existing issue {$existingKey} covers {$issue->uniqueId()}.");
+            } elseif (!$input->getOption('dry-run')) {
+                $key = $issue->ensure();
+                $this->log($output, "Created issue {$key} for {$issue->uniqueId()}.");
             } else {
-                $this->logLine($output, "Would have created an issue in {$jira_project} if not a dry run.");
+                $this->log($output, "Would have created an issue for {$issue->uniqueId()} if not a dry run.");
             }
         }
+
     }
 
     /**
@@ -232,6 +193,58 @@ GQL;
     }
 
     /**
+     * Fetch Dependabot pull request data from GitHub.
+     *
+     * @return array<array<string,array<string,string>>>
+     */
+    protected function fetchPullRequestData(): array
+    {
+        $repo = \getenv('GITHUB_REPOSITORY');
+        $author = 'author:app/dependabot author:app/dependabot-preview';
+
+        $query = <<<GQL
+{
+  search(query: "type:pr state:open {$author} repo:{$repo} label:security", type: ISSUE, first: 100) {
+    issueCount
+    pageInfo {
+      endCursor
+      startCursor
+    }
+    edges {
+      node {
+        ... on PullRequest {
+          number
+          title
+          url
+        }
+      }
+    }
+  }
+}
+GQL;
+
+        $variables = [];
+
+        $response = $this->getGHClient()->query($query, $variables);
+
+        if ($response->hasErrors()) {
+            $messages = \array_map(static function (array $error) {
+                return $error['message'];
+            }, $response->getErrors());
+
+            throw new RuntimeException(
+                \sprintf('GraphQL client error: %s. Original query: %s', \implode(', ', $messages), $query),
+            );
+        }
+
+        // Drill down to the response data we want, if there.
+        $pr_data = $response->getData();
+        $prs = $pr_data['search']['edges'] ?? [];
+
+        return $pr_data['search']['edges'] ?? [];
+    }
+
+    /**
      * Create the GraphQL client with supplied Bearer token.
      *
      */
@@ -273,15 +286,10 @@ GQL;
             return;
         }
 
-        $output->write($message);
+        $timestamp = gmdate(DATE_ISO8601);
+        $jira_project = getenv('JIRA_PROJECT');
+
+        $output->writeln("{$timestamp} - {$jira_project} - {$message}");
     }
 
-    protected function logLine(OutputInterface $output, string $message)
-    {
-        if ($output->getVerbosity() < OutputInterface::VERBOSITY_VERBOSE) {
-            return;
-        }
-
-        $output->writeln($message);
-    }
 }

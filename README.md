@@ -28,9 +28,7 @@ It has some required and some optional settings, which are passed to the action 
 - `JIRA_USER`: The ID of the Jira user which is associated with the 'JiraApiToken' secret, eg 'someuser@reload.dk' (**REQUIRED**)
 - `JIRA_PROJECT`: The project key for the Jira project where issues should be created, eg `TEST` or `ABC`. (**REQUIRED**)
 - `JIRA_ISSUE_TYPE`: Type of issue to create, e.g. `Security`. Defaults to `Bug`. (*Optional*)
-- `JIRA_WATCHERS`: Jira users to add as watchers to tickets. Use the [YAML block scalar literal style indicator with stripping chomping indicator](https://yaml-multiline.info/) (pipe and dash: `|-`) to add multiple watchers. (*Optional*)
-- `JIRA_RESTRICTED_GROUP`: If set, the action will add a restricted comment to the ticket, viewable by only this Jira group. (*Optional*)
-- `JIRA_RESTRICTED_COMMENT`: The comment to post. Use the YAML multiline operator for adding linebreaks to the comment. (*Optional, but required if group is set*)
+- `JIRA_WATCHERS`: Jira users to add as watchers to tickets. Separate multiple watchers with comma (no spaces).
 
 Here is an example setup which runs this action every 6 hours.
 
@@ -54,13 +52,7 @@ jobs:
           JIRA_USER: someuser@reload.dk
           JIRA_PROJECT: ABC
           JIRA_ISSUE_TYPE: Security
-          JIRA_WATCHERS: |-
-            someuser@reload.dk
-            someotheruser@reload.dk
-          JIRA_RESTRICTED_GROUP: Developers
-          JIRA_RESTRICTED_COMMENT: |-
-            Remember to evaluate severity here and set ticket priority.
-            Check out the guide [in our wiki|https://foo.atlassian.net/wiki/]!
+          JIRA_WATCHERS: someuser@reload.dk,someotheruser@reload.dk
 ```
 
 

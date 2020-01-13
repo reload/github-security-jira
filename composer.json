@@ -4,11 +4,17 @@
     "license": "MIT",
     "require": {
         "php": ">=7.2.0",
-        "lesstif/php-jira-rest-client": "^1",
         "softonic/graphql-client": "^1.2",
         "symfony/console": "^4",
-        "symfony/yaml": "^5.0"
+        "symfony/yaml": "^5.0",
+        "reload/jira-security-issue": "dev-master"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/reload/jira-security-issue"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "GitHubSecurityJira\\": "src/"
