@@ -81,7 +81,12 @@ class SyncCommand extends Command
         $github_repo = getenv('GITHUB_REPOSITORY');
 
         $issue_type = getenv('JIRA_ISSUE_TYPE');
-        $watchers = explode("\n", getenv('JIRA_WATCHERS')) ?? [];
+
+        $watchers = [];
+        if (is_string(getenv('JIRA_WATCHERS'))) {
+            $watchers = explode("\n", getenv('JIRA_WATCHERS')) ?? [];
+        }
+
         $res_group = getenv('JIRA_RESTRICTED_GROUP');
         $res_comment = getenv('JIRA_RESTRICTED_COMMENT');
 
@@ -126,7 +131,7 @@ class SyncCommand extends Command
             $issue->setField('restricted_comment', $res_comment ?? []);
 
             $timestamp = gmdate(DATE_ISO8601);
-            $this->log($output, "{$timestamp} - {$project} - {$package}:{$vulnerableVersionRange} - ");
+            $this->log($output, "{$timestamp} - {$jira_project} - {$package}:{$vulnerableVersionRange} - ");
 
             // Determine whether there is an issue for this alert already.
             try {
@@ -151,7 +156,7 @@ class SyncCommand extends Command
                 }
                 $this->logLine($output, "Created issue {$key}");
             } else {
-                $this->logLine($output, "Would have created an issue in {$project} if not a dry run.");
+                $this->logLine($output, "Would have created an issue in {$jira_project} if not a dry run.");
             }
         }
     }
