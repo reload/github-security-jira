@@ -10,14 +10,22 @@
         "reload/jira-security-issue": "dev-master"
     },
     "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/reload/jira-security-issue"
-        }
+      {
+        "type": "vcs",
+        "url": "https://github.com/appocular/coding-standard"
+      },
+      {
+        "type": "vcs",
+        "url": "https://github.com/reload/jira-security-issue"
+      }
     ],
     "autoload": {
         "psr-4": {
             "GitHubSecurityJira\\": "src/"
         }
+    },
+    "require-dev": {
+        "appocular/coding-standard": "^1.0",
+        "phpstan/phpstan": "^0.12.5"
     }
 }

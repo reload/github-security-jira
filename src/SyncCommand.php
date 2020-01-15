@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace GitHubSecurityJira;
 
+use RuntimeException;
+use Softonic\GraphQL\Client as GraphQLClient;
+use Softonic\GraphQL\ClientBuilder;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Yaml\Yaml;
-use Softonic\GraphQL\ClientBuilder;
 
 /**
  * The default sync command.
@@ -25,6 +25,11 @@ class SyncCommand extends Command
      */
     protected static $defaultName = 'sync';
 
+    /**
+     * Required options in environment variables.
+     *
+     * @var array<string>
+     */
     protected $requiredOptions = [
         'GITHUB_REPOSITORY',
         'GH_SECURITY_TOKEN',
@@ -45,7 +50,7 @@ class SyncCommand extends Command
     /**
      * {@inheritDoc}
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setDescription('Sync GitHub Alert status to Jira')
@@ -54,14 +59,16 @@ class SyncCommand extends Command
                 'dry-run',
                 null,
                 InputOption::VALUE_NONE,
-                'Do dry run (dont change anything)'
+                'Do dry run (dont change anything)',
             );
     }
 
     /**
      * {@inheritDoc}
+     *
+     * @phpcsSuppress SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
      */
-    protected function initialize(InputInterface $input, OutputInterface $output)
+    protected function initialize(InputInterface $input, OutputInterface $output): void
     {
         // Validate config.
         $this->validateConfig();
@@ -75,7 +82,8 @@ class SyncCommand extends Command
 
         // Fetch alert data from GitHub.
         $alerts = $this->fetchAlertData();
-        if (empty($alerts)) {
+
+        if (!\is_array($alerts)) {
             $this->log($output, 'No alerts found.');
         }
 
@@ -87,7 +95,7 @@ class SyncCommand extends Command
 
             $existingKey = $issue->exists();
 
-            if (!is_null($existingKey)) {
+            if (!\is_null($existingKey)) {
                 $this->log($output, "Existing issue {$existingKey} covers {$issue->uniqueId()}.");
             } elseif (!$input->getOption('dry-run')) {
                 $key = $issue->ensure();
@@ -104,13 +112,13 @@ class SyncCommand extends Command
         foreach ($pull_requests as $pull_request) {
             $issue = new PullRequestIssue($pull_request['node']);
 
-            if (in_array($issue->uniqueId(), $alertsFound)) {
+            if (\in_array($issue->uniqueId(), $alertsFound)) {
                 continue;
             }
 
             $existingKey = $issue->exists();
 
-            if (!is_null($existingKey)) {
+            if (!\is_null($existingKey)) {
                 $this->log($output, "Existing issue {$existingKey} covers {$issue->uniqueId()}.");
             } elseif (!$input->getOption('dry-run')) {
                 $key = $issue->ensure();
@@ -120,13 +128,19 @@ class SyncCommand extends Command
             }
         }
 
+        return 0;
     }
 
     /**
+     * phpcs:disable SlevomatCodingStandard.TypeHints.DisallowMixedTypeHint.DisallowedMixedTypeHint
+     *
      * Fetch alert data from GitHub.
+     *
+     * @return array<string,mixed>
      */
-    protected function fetchAlertData()
+    protected function fetchAlertData(): array
     {
+        // phpcs:enable SlevomatCodingStandard.TypeHints.DisallowMixedTypeHint.DisallowedMixedTypeHint
         $query = <<<'GQL'
             query alerts($owner: String!, $repo: String!) {
               repository(owner: $owner, name: $repo) {
@@ -168,28 +182,28 @@ class SyncCommand extends Command
             }
 GQL;
 
-        $repo = explode('/', getenv('GITHUB_REPOSITORY'));
+        $repo = \explode('/', \getenv('GITHUB_REPOSITORY') ?: '');
         $variables = [
             'owner' => $repo[0],
             'repo' => $repo[1],
         ];
 
         $response = $this->getGHClient()->query($query, $variables);
+
         if ($response->hasErrors()) {
-            $messages = array_map(function (array $error) {
+            $messages = \array_map(static function (array $error) {
                 return $error['message'];
             }, $response->getErrors());
 
-            throw new \RuntimeException(
-                sprintf('GraphQL client error: %s. Original query: %s', implode(', ', $messages), $query)
+            throw new RuntimeException(
+                \sprintf('GraphQL client error: %s. Original query: %s', \implode(', ', $messages), $query),
             );
         }
 
         // Drill down to the response data we want, if there.
         $alert_data = $response->getData();
-        $alerts = $alert_data['repository']['vulnerabilityAlerts']['nodes'] ?? [];
 
-        return $alerts;
+        return $alert_data['repository']['vulnerabilityAlerts']['nodes'] ?? [];
     }
 
     /**
@@ -239,57 +253,52 @@ GQL;
 
         // Drill down to the response data we want, if there.
         $pr_data = $response->getData();
-        $prs = $pr_data['search']['edges'] ?? [];
 
         return $pr_data['search']['edges'] ?? [];
     }
 
     /**
      * Create the GraphQL client with supplied Bearer token.
-     *
      */
-    protected function getGHClient()
+    protected function getGHClient(): GraphQLClient
     {
+        $access_token = \getenv('GH_SECURITY_TOKEN');
 
-        $access_token = getenv('GH_SECURITY_TOKEN');
-        $client = ClientBuilder::build('https://api.github.com/graphql', [
+        return ClientBuilder::build('https://api.github.com/graphql', [
             'headers' => [
                 'Accept' => 'application/json',
                 'Authorization' => "Bearer {$access_token}",
             ],
         ]);
-
-        return $client;
     }
 
     /**
      * Validate the required options.
      */
-    protected function validateConfig()
+    protected function validateConfig(): void
     {
         foreach ($this->requiredOptions as $option) {
-            $var = getenv($option);
-            if ($var === false || empty($var)) {
-                throw new \RuntimeException("Required env variable '{$option}' not set or empty.");
+            $var = \getenv($option);
+
+            if (!\is_string($var)) {
+                throw new RuntimeException("Required env variable '{$option}' not set or empty.");
             }
-            if ($option == 'GITHUB_REPOSITORY') {
-                if (count(explode('/', $var)) < 2) {
-                    throw new \RuntimeException('GitHub repository invalid: ' . getenv('GITHUB_REPOSITORY'));
-                }
+
+            if (($option === 'GITHUB_REPOSITORY') && (\count(\explode('/', $var)) < 2)) {
+                throw new RuntimeException('GitHub repository invalid: ' . \getenv('GITHUB_REPOSITORY'));
             }
         }
     }
 
-    protected function log(OutputInterface $output, string $message)
+    protected function log(OutputInterface $output, string $message): void
     {
         if ($output->getVerbosity() < OutputInterface::VERBOSITY_VERBOSE) {
             return;
         }
 
-        $timestamp = gmdate(DATE_ISO8601);
-        $jira_project = getenv('JIRA_PROJECT');
+        $timestamp = \gmdate(\DATE_ISO8601);
+        $jira_project = \getenv('JIRA_PROJECT');
 
         $output->writeln("{$timestamp} - {$jira_project} - {$message}");
     }
-
 }
