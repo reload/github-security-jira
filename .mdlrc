@@ -1,0 +1,2 @@
+# Disable "MD013 Line length" and "MD029 Ordered list item prefix".
+rules "~MD013", "~MD029"
