@@ -29,9 +29,9 @@ class PullRequestIssue extends JiraSecurityIssue
      */
     public function __construct(array $data)
     {
-        $this->package = \preg_replace('/.*Bump (.*) from.*/', '$1', $data['title']) ?? '';
-        $this->manifestPath = \preg_replace('/.* in \/(.*)/', '$1', $data['title']) ?? '';
-        $this->safeVersion = \preg_replace('/.*to (.*) in.*/', '$1', $data['title']) ?? '';
+        $this->package = \preg_filter('/.*Bump (.*) from.*/', '$1', $data['title']) ?? '';
+        $this->manifestPath = \preg_filter('/.* in \/(.*)/', '$1', $data['title']) ?? '';
+        $this->safeVersion = \preg_filter('/.*to ([^ ]+).*/', '$1', $data['title']) ?? '';
 
         $githubRepo = \getenv('GITHUB_REPOSITORY') ?: '';
 
@@ -57,6 +57,10 @@ EOT;
      */
     public function uniqueId(): string
     {
+        if ($this->manifestPath === '') {
+            return "{$this->package}:{$this->safeVersion}";
+        }
+
         return "{$this->package}:{$this->manifestPath}:{$this->safeVersion}";
     }
 }
