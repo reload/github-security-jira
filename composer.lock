@@ -787,17 +787,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reload/jira-security-issue.git",
-                "reference": "c07e4140bbbd383de86ef92bb882c2dc591a2dc4"
+                "reference": "f8c2ba2b98074530c6d35d4f72eac96221645111"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reload/jira-security-issue/zipball/c07e4140bbbd383de86ef92bb882c2dc591a2dc4",
-                "reference": "c07e4140bbbd383de86ef92bb882c2dc591a2dc4",
+                "url": "https://api.github.com/repos/reload/jira-security-issue/zipball/f8c2ba2b98074530c6d35d4f72eac96221645111",
+                "reference": "f8c2ba2b98074530c6d35d4f72eac96221645111",
                 "shasum": ""
             },
             "require": {
                 "lesstif/php-jira-rest-client": "^1.42 || ^2.0",
-                "php": ">=7.2.0"
+                "php": ">=7.2.0",
+                "webignition/symfony-console-typed-input": "^0.4.0"
             },
             "require-dev": {
                 "appocular/coding-standard": "^1.0",
@@ -825,7 +826,7 @@
                 "source": "https://github.com/reload/jira-security-issue/tree/master",
                 "issues": "https://github.com/reload/jira-security-issue/issues"
             },
-            "time": "2020-03-01T15:26:17+00:00"
+            "time": "2020-03-19T08:31:48+00:00"
         },
         {
             "name": "softonic/graphql-client",
@@ -1374,6 +1375,59 @@
                 }
             ],
             "time": "2020-03-12T13:44:00+00:00"
+        },
+        {
+            "name": "webignition/symfony-console-typed-input",
+            "version": "0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webignition/symfony-console-typed-input.git",
+                "reference": "788052cb27ebee8a651bc7494f727314c4227318"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webignition/symfony-console-typed-input/zipball/788052cb27ebee8a651bc7494f727314c4227318",
+                "reference": "788052cb27ebee8a651bc7494f727314c4227318",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.0",
+                "symfony/console": "^4.4|^5.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.2",
+                "phpstan/phpstan": "^0.11.4",
+                "phpstan/phpstan-mockery": "^0.11.0",
+                "phpunit/phpunit": "^8",
+                "squizlabs/php_codesniffer": "^3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "webignition\\SymfonyConsole\\TypedInput\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jon Cram",
+                    "email": "jon@webignition.net"
+                }
+            ],
+            "description": "Symfony InputInterface providing type-specific getters for options and arguments",
+            "homepage": "https://github.com/webignition/symfony-console-typed-input",
+            "keywords": [
+                "console",
+                "input",
+                "inputinterface",
+                "symfony",
+                "type",
+                "typed"
+            ],
+            "time": "2019-12-16T11:40:27+00:00"
         }
     ],
     "packages-dev": [
@@ -1471,16 +1525,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.14",
+            "version": "0.12.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "37bdd26a80235d0f9045b49f4151102b7831cbe2"
+                "reference": "b2c37bda79fdb11d801ce208ce391cffc0f572e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/37bdd26a80235d0f9045b49f4151102b7831cbe2",
-                "reference": "37bdd26a80235d0f9045b49f4151102b7831cbe2",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/b2c37bda79fdb11d801ce208ce391cffc0f572e6",
+                "reference": "b2c37bda79fdb11d801ce208ce391cffc0f572e6",
                 "shasum": ""
             },
             "require": {
@@ -1520,7 +1574,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-03-02T22:29:43+00:00"
+            "time": "2020-03-17T15:39:11+00:00"
         },
         {
             "name": "slevomat/coding-standard",
