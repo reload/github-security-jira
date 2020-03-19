@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c9ead59112aebd7e19abc06fc7bb932e",
+    "content-hash": "860f6fb7facd20f9b7c65518fe5e2392",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -813,19 +813,11 @@
                     "Reload\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Reload\\": "tests/"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "description": "Create Jira issues if it doesn't exist",
-            "support": {
-                "source": "https://github.com/reload/jira-security-issue/tree/master",
-                "issues": "https://github.com/reload/jira-security-issue/issues"
-            },
             "time": "2020-03-19T08:31:48+00:00"
         },
         {

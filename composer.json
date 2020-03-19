@@ -13,10 +13,6 @@
       {
         "type": "vcs",
         "url": "https://github.com/appocular/coding-standard"
-      },
-      {
-        "type": "vcs",
-        "url": "https://github.com/reload/jira-security-issue"
       }
     ],
     "autoload": {
