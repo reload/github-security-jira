@@ -1,0 +1,46 @@
+on: pull_request
+name: Code style review
+jobs:
+  review_codestyle:
+    name: Codestyle
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Setup PHP, with composer and extensions
+      uses: shivammathur/setup-php@master
+      with:
+        php-version: 7.4
+        coverage: none
+    - name: Install Reviewdog
+      run: |
+        wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s -- -b $PWD/ latest
+    - name: Install Dependencies
+      run: |
+        composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+    - name: Check codestyle
+      run: |
+        vendor/bin/phpcs bin/ src/ --report=checkstyle | ./reviewdog -f=checkstyle -name=PHPCS -reporter=github-pr-check
+      env:
+        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  static_code_analysis:
+    name: Static Code Analysis
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Setup PHP, with composer and extensions
+      uses: shivammathur/setup-php@master
+      with:
+        php-version: 7.4
+        coverage: none
+    - name: Install Reviewdog
+      run: |
+        wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s -- -b $PWD/ latest
+    - name: Install Dependencies
+      run: |
+        composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+    - name: Static code analysis
+      run: |
+        php -d memory_limit=1G vendor/bin/phpstan analyse . --error-format=checkstyle | ./reviewdog -f=checkstyle -name=PHPStan -reporter=github-pr-check
+      env:
+        REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
