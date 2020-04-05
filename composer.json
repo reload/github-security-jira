@@ -5,7 +5,7 @@
     "require": {
         "php": ">=7.2.0",
         "softonic/graphql-client": "^1.2",
-        "symfony/console": "^4",
+        "symfony/console": "^5",
         "symfony/yaml": "^5.0",
         "reload/jira-security-issue": "dev-master"
     },
