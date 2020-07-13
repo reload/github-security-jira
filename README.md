@@ -29,6 +29,9 @@ It has some required and some optional settings, which are passed to the action 
 - `JIRA_PROJECT`: The project key for the Jira project where issues should be created, eg `TEST` or `ABC`. (**REQUIRED**)
 - `JIRA_ISSUE_TYPE`: Type of issue to create, e.g. `Security`. Defaults to `Bug`. (*Optional*)
 - `JIRA_WATCHERS`: Jira users to add as watchers to tickets. Separate multiple watchers with comma (no spaces).
+- `JIRA_RESTRICTED_COMMENT_ROLE`: A comment with restricted visibility
+  to this role is posted with info about who was added as watchers to
+  the issue. Defaults to `Developers`. (*Optional*)
 
 Here is an example setup which runs this action every 6 hours.
 
