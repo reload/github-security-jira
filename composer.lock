@@ -7,6 +7,68 @@
     "content-hash": "29d608246edbfd8de25f1730f7787d4f",
     "packages": [
         {
+            "name": "graham-campbell/result-type",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GrahamCampbell/Result-Type.git",
+                "reference": "7e279d2cd5d7fbb156ce46daada972355cea27bb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GrahamCampbell/Result-Type/zipball/7e279d2cd5d7fbb156ce46daada972355cea27bb",
+                "reference": "7e279d2cd5d7fbb156ce46daada972355cea27bb",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0|^8.0",
+                "phpoption/phpoption": "^1.7.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.5|^7.5|^8.5|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GrahamCampbell\\ResultType\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graham Campbell",
+                    "email": "graham@alt-three.com"
+                }
+            ],
+            "description": "An Implementation Of The Result Type",
+            "keywords": [
+                "Graham Campbell",
+                "GrahamCampbell",
+                "Result Type",
+                "Result-Type",
+                "result"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/graham-campbell/result-type",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-04-13T13:17:36+00:00"
+        },
+        {
             "name": "guzzlehttp/guzzle",
             "version": "6.5.5",
             "source": {
@@ -264,16 +326,16 @@
         },
         {
             "name": "lesstif/php-jira-rest-client",
-            "version": "2.3.0",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lesstif/php-jira-rest-client.git",
-                "reference": "9e7fa6555d61a2b9c5e83cbdaf7a4e3a0d8c09e9"
+                "reference": "95061a27ff78c159dbae784ce185ecd5c4bff6e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lesstif/php-jira-rest-client/zipball/9e7fa6555d61a2b9c5e83cbdaf7a4e3a0d8c09e9",
-                "reference": "9e7fa6555d61a2b9c5e83cbdaf7a4e3a0d8c09e9",
+                "url": "https://api.github.com/repos/lesstif/php-jira-rest-client/zipball/95061a27ff78c159dbae784ce185ecd5c4bff6e2",
+                "reference": "95061a27ff78c159dbae784ce185ecd5c4bff6e2",
                 "shasum": ""
             },
             "require": {
@@ -282,7 +344,7 @@
                 "monolog/monolog": "~1.12|^2.0",
                 "netresearch/jsonmapper": "^2.0",
                 "php": "^7.1",
-                "vlucas/phpdotenv": "~1.0|~2.0|^3.0|^4.0"
+                "vlucas/phpdotenv": "^4.0|^5.0"
             },
             "require-dev": {
                 "mockery/mockery": "^0.9.4",
@@ -321,7 +383,7 @@
                 "jira-rest",
                 "rest"
             ],
-            "time": "2020-07-30T15:07:58+00:00"
+            "time": "2020-09-10T11:01:00+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -804,16 +866,16 @@
         },
         {
             "name": "reload/jira-security-issue",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reload/jira-security-issue.git",
-                "reference": "6c93a496e61ef2d7d9b5701d25ec68c23688bfa3"
+                "reference": "46f560fe6c2b83abee38e46fff45fa57a0cfcb5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reload/jira-security-issue/zipball/6c93a496e61ef2d7d9b5701d25ec68c23688bfa3",
-                "reference": "6c93a496e61ef2d7d9b5701d25ec68c23688bfa3",
+                "url": "https://api.github.com/repos/reload/jira-security-issue/zipball/46f560fe6c2b83abee38e46fff45fa57a0cfcb5d",
+                "reference": "46f560fe6c2b83abee38e46fff45fa57a0cfcb5d",
                 "shasum": ""
             },
             "require": {
@@ -839,7 +901,7 @@
                 "MIT"
             ],
             "description": "Create Jira issues if it doesn't exist",
-            "time": "2020-08-13T07:31:55+00:00"
+            "time": "2020-09-15T04:08:49+00:00"
         },
         {
             "name": "softonic/graphql-client",
@@ -1940,37 +2002,39 @@
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v4.1.8",
+            "version": "v5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "572af79d913627a9d70374d27a6f5d689a35de32"
+                "reference": "fba64139db67123c7a57072e5f8d3db10d160b66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/572af79d913627a9d70374d27a6f5d689a35de32",
-                "reference": "572af79d913627a9d70374d27a6f5d689a35de32",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/fba64139db67123c7a57072e5f8d3db10d160b66",
+                "reference": "fba64139db67123c7a57072e5f8d3db10d160b66",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.5.9 || ^7.0 || ^8.0",
-                "phpoption/phpoption": "^1.7.3",
-                "symfony/polyfill-ctype": "^1.17"
+                "ext-pcre": "*",
+                "graham-campbell/result-type": "^1.0.1",
+                "php": "^7.1.3 || ^8.0",
+                "phpoption/phpoption": "^1.7.4",
+                "symfony/polyfill-ctype": "^1.17",
+                "symfony/polyfill-mbstring": "^1.17",
+                "symfony/polyfill-php80": "^1.17"
             },
             "require-dev": {
                 "bamarni/composer-bin-plugin": "^1.4.1",
                 "ext-filter": "*",
-                "ext-pcre": "*",
-                "phpunit/phpunit": "^4.8.35 || ^5.7.27 || ^6.5.6 || ^7.0"
+                "phpunit/phpunit": "^7.5.20 || ^8.5.2 || ^9.0"
             },
             "suggest": {
-                "ext-filter": "Required to use the boolean validator.",
-                "ext-pcre": "Required to use most of the library."
+                "ext-filter": "Required to use the boolean validator."
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.1-dev"
+                    "dev-master": "5.2-dev"
                 }
             },
             "autoload": {
@@ -2010,7 +2074,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-07-14T19:22:52+00:00"
+            "time": "2020-09-14T15:57:31+00:00"
         },
         {
             "name": "webignition/symfony-console-typed-input",
