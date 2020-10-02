@@ -148,6 +148,7 @@ class SyncCommand extends Command
                   nodes {
                     securityVulnerability {
                       advisory {
+                        ghsaId
                         description
                         identifiers {
                           type
