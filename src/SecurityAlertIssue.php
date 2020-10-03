@@ -15,9 +15,9 @@ class SecurityAlertIssue extends JiraSecurityIssue
     protected string $package;
 
     /**
-     * @var string
+     * @var string|null
      */
-    protected string $safeVersion;
+    protected ?string $safeVersion;
 
     /**
      * @var string
@@ -30,6 +30,11 @@ class SecurityAlertIssue extends JiraSecurityIssue
     protected string $manifestPath;
 
     /**
+     * @var string
+     */
+    protected string $id;
+
+    /**
      * phpcs:disable SlevomatCodingStandard.TypeHints.DisallowMixedTypeHint.DisallowedMixedTypeHint
      *
      * @param array<string,mixed> $data
@@ -38,9 +43,10 @@ class SecurityAlertIssue extends JiraSecurityIssue
     {
         // phpcs:enable SlevomatCodingStandard.TypeHints.DisallowMixedTypeHint.DisallowedMixedTypeHint
         $this->package = $data['securityVulnerability']['package']['name'];
-        $this->safeVersion = $data['securityVulnerability']['firstPatchedVersion']['identifier'];
+        $this->safeVersion = $data['securityVulnerability']['firstPatchedVersion']['identifier'] ?? null;
         $this->vulnerableVersionRange = $data['securityVulnerability']['vulnerableVersionRange'];
         $this->manifestPath = \pathinfo($data['vulnerableManifestPath'], \PATHINFO_DIRNAME);
+        $this->id = $data['securityVulnerability']['advisory']['ghsaId'];
 
         $references = [];
 
@@ -55,12 +61,13 @@ class SecurityAlertIssue extends JiraSecurityIssue
         $advisory_description = \wordwrap($data['securityVulnerability']['advisory']['description'] ?? '', 100);
         $ecosystem = $data['securityVulnerability']['package']['ecosystem'] ?? '';
         $githubRepo = \getenv('GITHUB_REPOSITORY') ?: '';
+        $safeVersion = $this->safeVersion ?? 'no fix';
 
         $body = <<<EOT
 - Repository: [{$githubRepo}|https://github.com/{$githubRepo}]
 - Package: {$this->package} ($ecosystem)
 - Vulnerable version: {$this->vulnerableVersionRange}
-- Secure version: {$this->safeVersion}
+- Secure version: {$safeVersion}
 
 EOT;
 
@@ -80,7 +87,7 @@ EOT;
 
         $this->setKeyLabel($githubRepo);
         $this->setKeyLabel($this->uniqueId());
-        $this->setTitle("{$this->package} ({$this->safeVersion})");
+        $this->setTitle("{$this->package} ({$safeVersion})");
         $this->setBody($body);
     }
 
@@ -91,10 +98,13 @@ EOT;
      */
     public function uniqueId(): string
     {
+        // If there is no safe version we use the GHSA ID as identifier.
+        $identifier = $this->safeVersion ?? $this->id;
+
         if ($this->manifestPath === '.') {
-            return "{$this->package}:{$this->safeVersion}";
+            return "{$this->package}:{$identifier}";
         }
 
-        return "{$this->package}:{$this->manifestPath}:{$this->safeVersion}";
+        return "{$this->package}:{$this->manifestPath}:{$identifier}";
     }
 }
