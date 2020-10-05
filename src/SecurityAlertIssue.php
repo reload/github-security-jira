@@ -98,7 +98,11 @@ EOT;
      */
     public function uniqueId(): string
     {
-        // If there is no safe version we use the GHSA ID as identifier.
+        // If there is no safe version we use the GHSA ID as
+        // identifier. If the security alert is later updated with a
+        // known safe version a side effect of this is that a new Jira
+        // issue will be created. We'll consider this a positive side
+        // effect.
         $identifier = $this->safeVersion ?? $this->id;
 
         if ($this->manifestPath === '.') {
