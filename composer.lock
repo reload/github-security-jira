@@ -866,16 +866,16 @@
         },
         {
             "name": "reload/jira-security-issue",
-            "version": "v1.0.4",
+            "version": "v1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reload/jira-security-issue.git",
-                "reference": "4f8144d73488344244e5a436923dcd49d35f0a5c"
+                "reference": "d38c97cf956c4ba5d5f6d8b88bcf7a23f8b553c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reload/jira-security-issue/zipball/4f8144d73488344244e5a436923dcd49d35f0a5c",
-                "reference": "4f8144d73488344244e5a436923dcd49d35f0a5c",
+                "url": "https://api.github.com/repos/reload/jira-security-issue/zipball/d38c97cf956c4ba5d5f6d8b88bcf7a23f8b553c1",
+                "reference": "d38c97cf956c4ba5d5f6d8b88bcf7a23f8b553c1",
                 "shasum": ""
             },
             "require": {
@@ -901,7 +901,7 @@
                 "MIT"
             ],
             "description": "Create Jira issues if it doesn't exist",
-            "time": "2020-09-21T04:34:56+00:00"
+            "time": "2020-10-07T04:03:45+00:00"
         },
         {
             "name": "softonic/graphql-client",
@@ -994,12 +994,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "04c3a31fe8ea94b42c9e2d1acc93d19782133b00"
+                "reference": "ae789a8a2ad189ce7e8216942cdb9b77319f5eb8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/04c3a31fe8ea94b42c9e2d1acc93d19782133b00",
-                "reference": "04c3a31fe8ea94b42c9e2d1acc93d19782133b00",
+                "url": "https://api.github.com/repos/symfony/console/zipball/ae789a8a2ad189ce7e8216942cdb9b77319f5eb8",
+                "reference": "ae789a8a2ad189ce7e8216942cdb9b77319f5eb8",
                 "shasum": ""
             },
             "require": {
@@ -1079,7 +1079,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-18T14:27:32+00:00"
+            "time": "2020-10-07T15:23:00+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
