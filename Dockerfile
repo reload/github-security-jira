@@ -8,7 +8,7 @@ WORKDIR /opt/ghsec-jira
 RUN composer install --prefer-dist --no-dev
 
 # -----------------
-FROM php:7.4.12-alpine
+FROM php:8.0.0-alpine
 
 COPY --from=build-env /opt/ghsec-jira/ /opt/ghsec-jira/
 
