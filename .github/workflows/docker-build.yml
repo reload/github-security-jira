@@ -1,0 +1,13 @@
+on: push
+name: Docker build and run
+jobs:
+  build:
+    name: Docker build and run
+    if: '!github.event.deleted'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Docker build
+      run: docker build --tag github-security-jira:latest .
+    - name: Run in Docker
+      run: docker run -t --rm github-security-jira:latest --version
