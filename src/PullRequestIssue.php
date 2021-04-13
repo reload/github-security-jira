@@ -46,6 +46,12 @@ EOT;
 
         $this->setKeyLabel($githubRepo);
         $this->setKeyLabel($this->uniqueId());
+        $this->setKeyLabel("{$this->package}");
+
+        if ($this->manifestPath !== '') {
+            $this->setKeyLabel("{$this->package}:{$this->manifestPath}");
+        }
+
         $this->setTitle("{$this->package} ({$this->safeVersion})");
         $this->setBody($body);
     }
