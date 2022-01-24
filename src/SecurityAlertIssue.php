@@ -47,6 +47,7 @@ class SecurityAlertIssue extends JiraSecurityIssue
         $this->vulnerableVersionRange = $data['securityVulnerability']['vulnerableVersionRange'];
         $this->manifestPath = \pathinfo($data['vulnerableManifestPath'], \PATHINFO_DIRNAME);
         $this->id = $data['securityVulnerability']['advisory']['ghsaId'];
+        $this->severity = $data['securityVulnerability']['severity'];
 
         $references = [];
 
@@ -87,7 +88,7 @@ EOT;
 
         $this->setKeyLabel($githubRepo);
         $this->setKeyLabel($this->uniqueId());
-        $this->setTitle("{$this->package} ({$safeVersion})");
+        $this->setTitle("{$this->package} ({$safeVersion}) - {$this->severity}");
         $this->setBody($body);
     }
 
