@@ -90,6 +90,12 @@ EOT;
         $this->setKeyLabel($this->uniqueId());
         $this->setTitle("{$this->package} ({$safeVersion}) - {$this->severity}");
         $this->setBody($body);
+
+        $labels = \getenv('JIRA_ISSUE_LABELS');
+        foreach (\explode(',', $labels) as $label){
+            $this->setKeyLabel($label);
+        }
+
     }
 
     /**
