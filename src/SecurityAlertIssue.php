@@ -35,6 +35,11 @@ class SecurityAlertIssue extends JiraSecurityIssue
     protected string $id;
 
     /**
+     * @var string
+     */
+    protected string $severity;
+
+    /**
      * phpcs:disable SlevomatCodingStandard.TypeHints.DisallowMixedTypeHint.DisallowedMixedTypeHint
      *
      * @param array<string,mixed> $data
