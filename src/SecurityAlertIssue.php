@@ -98,8 +98,10 @@ EOT;
 
         $labels = \getenv('JIRA_ISSUE_LABELS');
 
-        foreach (\explode(',', $labels) as $label) {
-            $this->setKeyLabel($label);
+        if ($labels) {
+            foreach (\explode(',', $labels) as $label) {
+                $this->setKeyLabel($label);
+            }
         }
     }
 
