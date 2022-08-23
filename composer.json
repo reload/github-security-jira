@@ -6,7 +6,7 @@
         "php": ">=8.1",
         "softonic/graphql-client": "^2.1",
         "symfony/console": "^5",
-        "symfony/yaml": "^5.0",
+        "symfony/yaml": "^6.1",
         "reload/jira-security-issue": "^1.0.0"
     },
     "repositories": [
