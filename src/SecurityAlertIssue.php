@@ -8,7 +8,6 @@ use Reload\JiraSecurityIssue;
 
 class SecurityAlertIssue extends JiraSecurityIssue
 {
-
     /**
      * @var string
      */

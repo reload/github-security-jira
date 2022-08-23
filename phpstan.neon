@@ -1,5 +1,6 @@
 parameters:
-    level: max
-    excludes_analyse:
-        - vendor
-        - tests
+    level: 8
+    paths:
+    - .
+    excludePaths:
+    - vendor
