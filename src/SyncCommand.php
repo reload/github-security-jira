@@ -144,7 +144,7 @@ class SyncCommand extends Command
         $query = <<<'GQL'
             query alerts($owner: String!, $repo: String!) {
               repository(owner: $owner, name: $repo) {
-                vulnerabilityAlerts(first: 100) {
+                vulnerabilityAlerts(first: 100, states: OPEN) {
                   nodes {
                     securityVulnerability {
                       advisory {
