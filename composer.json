@@ -4,7 +4,7 @@
     "license": "MIT",
     "require": {
         "php": ">=8.1",
-        "softonic/graphql-client": "^1.2",
+        "softonic/graphql-client": "^2.1",
         "symfony/console": "^5",
         "symfony/yaml": "^5.0",
         "reload/jira-security-issue": "^1.0.0"

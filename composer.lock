@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "871887093da2cd12981180786a2b6009",
+    "content-hash": "fcb74528fc2e55f5660f6ce9098ae51f",
     "packages": [
         {
             "name": "graham-campbell/result-type",
@@ -806,20 +806,20 @@
         },
         {
             "name": "psr/cache",
-            "version": "1.0.1",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/cache.git",
-                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8"
+                "reference": "aa5030cfa5405eccfdcb1083ce040c2cb8d253bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/cache/zipball/d11b50ad223250cf17b86e38383413f5a6764bf8",
-                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8",
+                "url": "https://api.github.com/repos/php-fig/cache/zipball/aa5030cfa5405eccfdcb1083ce040c2cb8d253bf",
+                "reference": "aa5030cfa5405eccfdcb1083ce040c2cb8d253bf",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=8.0.0"
             },
             "type": "library",
             "extra": {
@@ -839,7 +839,7 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "homepage": "https://www.php-fig.org/"
                 }
             ],
             "description": "Common interface for caching libraries",
@@ -849,9 +849,9 @@
                 "psr-6"
             ],
             "support": {
-                "source": "https://github.com/php-fig/cache/tree/master"
+                "source": "https://github.com/php-fig/cache/tree/3.0.0"
             },
-            "time": "2016-08-06T20:24:11+00:00"
+            "time": "2021-02-03T23:26:27+00:00"
         },
         {
             "name": "psr/container",
@@ -1205,27 +1205,35 @@
         },
         {
             "name": "softonic/graphql-client",
-            "version": "1.3.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/softonic/graphql-client.git",
-                "reference": "6a38f9b02236f01708704f600b66a56bf88bca89"
+                "reference": "a4835774310caa72c53bf6ce8cb3bfd4cc5bc2be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/softonic/graphql-client/zipball/6a38f9b02236f01708704f600b66a56bf88bca89",
-                "reference": "6a38f9b02236f01708704f600b66a56bf88bca89",
+                "url": "https://api.github.com/repos/softonic/graphql-client/zipball/a4835774310caa72c53bf6ce8cb3bfd4cc5bc2be",
+                "reference": "a4835774310caa72c53bf6ce8cb3bfd4cc5bc2be",
                 "shasum": ""
             },
             "require": {
+                "ext-json": "*",
                 "guzzlehttp/guzzle": "^6.3 || ^7.0",
-                "php": ">=7.0",
-                "softonic/guzzle-oauth2-middleware": "^1.1"
+                "php": "^8.0",
+                "softonic/guzzle-oauth2-middleware": "^2.1",
+                "symfony/console": "^5.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.4",
-                "phpunit/phpunit": "^6.0"
+                "friendsofphp/php-cs-fixer": "^3.9",
+                "mockery/mockery": "^1.5",
+                "phpunit/phpunit": "^9.5",
+                "rector/rector": "^0.13.8",
+                "squizlabs/php_codesniffer": "^3.7"
             },
+            "bin": [
+                "bin/graphql-client"
+            ],
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1246,28 +1254,28 @@
             ],
             "support": {
                 "issues": "https://github.com/softonic/graphql-client/issues",
-                "source": "https://github.com/softonic/graphql-client/tree/1.3.0"
+                "source": "https://github.com/softonic/graphql-client/tree/2.1.0"
             },
-            "time": "2020-12-21T16:24:18+00:00"
+            "time": "2022-07-12T10:46:57+00:00"
         },
         {
             "name": "softonic/guzzle-oauth2-middleware",
-            "version": "1.3",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/softonic/guzzle-oauth2-middleware.git",
-                "reference": "25bad4609f969615a69da2530b783f231cf2b0c7"
+                "reference": "2e4bea29c8331b6032acbf379e19c6bc5dc1be1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/softonic/guzzle-oauth2-middleware/zipball/25bad4609f969615a69da2530b783f231cf2b0c7",
-                "reference": "25bad4609f969615a69da2530b783f231cf2b0c7",
+                "url": "https://api.github.com/repos/softonic/guzzle-oauth2-middleware/zipball/2e4bea29c8331b6032acbf379e19c6bc5dc1be1e",
+                "reference": "2e4bea29c8331b6032acbf379e19c6bc5dc1be1e",
                 "shasum": ""
             },
             "require": {
                 "league/oauth2-client": "^2.2",
                 "php": ">=7.0",
-                "psr/cache": "^1.0"
+                "psr/cache": "^1.0|^2.0|^3.0"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.4",
@@ -1292,9 +1300,9 @@
             ],
             "support": {
                 "issues": "https://github.com/softonic/guzzle-oauth2-middleware/issues",
-                "source": "https://github.com/softonic/guzzle-oauth2-middleware/tree/master"
+                "source": "https://github.com/softonic/guzzle-oauth2-middleware/tree/2.1.0"
             },
-            "time": "2020-01-23T14:35:38+00:00"
+            "time": "2022-07-11T08:44:18+00:00"
         },
         {
             "name": "symfony/console",
@@ -2463,5 +2471,5 @@
         "php": ">=8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
