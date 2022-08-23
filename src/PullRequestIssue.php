@@ -8,7 +8,6 @@ use Reload\JiraSecurityIssue;
 
 class PullRequestIssue extends JiraSecurityIssue
 {
-
     /**
      * @var string
      */
