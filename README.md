@@ -1,6 +1,6 @@
 # github-security-jira
 
-GitHub Action for mapping security alerts to Jira tickets.
+GitHub Action for mapping Dependabot security alerts to Jira tickets.
 
 ## Setup
 
