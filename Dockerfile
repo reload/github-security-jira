@@ -1,5 +1,5 @@
 # -----------------
-FROM composer:2.4.2 AS build-env
+FROM composer:2.4.3 AS build-env
 
 COPY . /opt/ghsec-jira/
 
