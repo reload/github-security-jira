@@ -1170,16 +1170,16 @@
         },
         {
             "name": "reload/jira-security-issue",
-            "version": "v1.0.30",
+            "version": "v1.0.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reload/jira-security-issue.git",
-                "reference": "122139d64f95062ca3ff27039a1fb23bda087d2b"
+                "reference": "9a9d6ef2d03fd0dc368121788644e37df85a957f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reload/jira-security-issue/zipball/122139d64f95062ca3ff27039a1fb23bda087d2b",
-                "reference": "122139d64f95062ca3ff27039a1fb23bda087d2b",
+                "url": "https://api.github.com/repos/reload/jira-security-issue/zipball/9a9d6ef2d03fd0dc368121788644e37df85a957f",
+                "reference": "9a9d6ef2d03fd0dc368121788644e37df85a957f",
                 "shasum": ""
             },
             "require": {
@@ -1208,9 +1208,9 @@
             "description": "Create Jira issues if it doesn't exist",
             "support": {
                 "issues": "https://github.com/reload/jira-security-issue/issues",
-                "source": "https://github.com/reload/jira-security-issue/tree/v1.0.30"
+                "source": "https://github.com/reload/jira-security-issue/tree/v1.0.31"
             },
-            "time": "2022-12-20T05:05:15+00:00"
+            "time": "2023-01-03T06:28:29+00:00"
         },
         {
             "name": "softonic/graphql-client",
