@@ -124,6 +124,6 @@ EOT;
             return "{$this->package}:{$identifier}";
         }
 
-        return "{$this->package}:{$this->manifestPath}:{$identifier}";
+        return str_ireplace(" ","_","{$this->package}:{$this->manifestPath}:{$identifier}");
     }
 }
