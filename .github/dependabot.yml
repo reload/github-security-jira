@@ -20,9 +20,5 @@ updates:
   schedule:
     interval: daily
     timezone: Europe/Copenhagen
-  directory: "/"
-  schedule:
-    interval: daily
-    timezone: Europe/Copenhagen
   reviewers:
   - "reload/developers"
