@@ -39,6 +39,16 @@ class SecurityAlertIssue extends JiraSecurityIssue
     protected string $severity;
 
     /**
+     * @var int
+     */
+    protected int $alertNumber;
+
+    /**
+     * @var string
+     */
+    protected string $advisorySummary;
+
+    /**
      * phpcs:disable SlevomatCodingStandard.TypeHints.DisallowMixedTypeHint.DisallowedMixedTypeHint
      *
      * @param array<string,mixed> $data
@@ -52,6 +62,8 @@ class SecurityAlertIssue extends JiraSecurityIssue
         $this->manifestPath = \pathinfo($data['vulnerableManifestPath'], \PATHINFO_DIRNAME);
         $this->id = $data['securityVulnerability']['advisory']['ghsaId'];
         $this->severity = $data['securityVulnerability']['severity'];
+        $this->alertNumber = $data['number'];
+        $this->advisorySummary = $data['securityVulnerability']['advisory']['summary'];
 
         $references = [];
 
@@ -70,6 +82,7 @@ class SecurityAlertIssue extends JiraSecurityIssue
 
         $body = <<<EOT
 - Repository: [{$githubRepo}|https://github.com/{$githubRepo}]
+- Alert: [{$advisorySummary}|https://github.com/{$githubRepo}/security/dependabot/{$alertNumber}]
 - Package: {$this->package} ($ecosystem)
 - Vulnerable version: {$this->vulnerableVersionRange}
 - Secure version: {$safeVersion}
