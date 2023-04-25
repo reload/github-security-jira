@@ -82,7 +82,7 @@ class SecurityAlertIssue extends JiraSecurityIssue
 
         $body = <<<EOT
 - Repository: [{$githubRepo}|https://github.com/{$githubRepo}]
-- Alert: [{$advisorySummary}|https://github.com/{$githubRepo}/security/dependabot/{$alertNumber}]
+- Alert: [{$this->advisorySummary}|https://github.com/{$githubRepo}/security/dependabot/{$this->alertNumber}]
 - Package: {$this->package} ($ecosystem)
 - Vulnerable version: {$this->vulnerableVersionRange}
 - Secure version: {$safeVersion}
