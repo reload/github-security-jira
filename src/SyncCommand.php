@@ -176,6 +176,7 @@ class SyncCommand extends Command
                     vulnerableManifestFilename
                     vulnerableManifestPath
                     vulnerableRequirements
+                    number
                   }
                 }
               }
