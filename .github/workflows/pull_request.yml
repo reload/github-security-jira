@@ -5,7 +5,7 @@ jobs:
     name: Codestyle
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Setup PHP, with composer and extensions
       uses: shivammathur/setup-php@master
       with:
@@ -27,7 +27,7 @@ jobs:
     name: Static Code Analysis
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Setup PHP, with composer and extensions
       uses: shivammathur/setup-php@master
       with:
