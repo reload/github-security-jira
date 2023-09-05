@@ -1134,30 +1134,31 @@
         },
         {
             "name": "reload/jira-security-issue",
-            "version": "v1.0.43",
+            "version": "v1.0.45",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reload/jira-security-issue.git",
-                "reference": "dcbc110d96cb3da8d1fe1dd367fdcd552dc28f2a"
+                "reference": "343a8c21de303123d2fd0b94c6625d972ce0600d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reload/jira-security-issue/zipball/dcbc110d96cb3da8d1fe1dd367fdcd552dc28f2a",
-                "reference": "dcbc110d96cb3da8d1fe1dd367fdcd552dc28f2a",
+                "url": "https://api.github.com/repos/reload/jira-security-issue/zipball/343a8c21de303123d2fd0b94c6625d972ce0600d",
+                "reference": "343a8c21de303123d2fd0b94c6625d972ce0600d",
                 "shasum": ""
             },
             "require": {
                 "lesstif/php-jira-rest-client": "^5",
                 "php": ">=8.2.0",
                 "phpstan/extension-installer": "^1.3",
-                "webignition/symfony-console-typed-input": "^0.4.0"
+                "webignition/symfony-console-typed-input": "^0.6"
             },
             "require-dev": {
                 "appocular/coding-standard": "^2.0",
                 "jangregor/phpstan-prophecy": "^1.0",
                 "phpspec/prophecy": "^1.15",
+                "phpspec/prophecy-phpunit": "^2.0",
                 "phpstan/phpstan": "^1.10",
-                "phpunit/phpunit": "^8.5",
+                "phpunit/phpunit": "^9.6",
                 "sempro/phpunit-pretty-print": "^1.2",
                 "symfony/console": "^5.0"
             },
@@ -1174,9 +1175,9 @@
             "description": "Create Jira issues if it doesn't exist",
             "support": {
                 "issues": "https://github.com/reload/jira-security-issue/issues",
-                "source": "https://github.com/reload/jira-security-issue/tree/v1.0.43"
+                "source": "https://github.com/reload/jira-security-issue/tree/v1.0.45"
             },
-            "time": "2023-09-05T17:04:39+00:00"
+            "time": "2023-09-05T18:08:08+00:00"
         },
         {
             "name": "softonic/graphql-client",
@@ -2179,28 +2180,30 @@
         },
         {
             "name": "webignition/symfony-console-typed-input",
-            "version": "0.4",
+            "version": "0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webignition/symfony-console-typed-input.git",
-                "reference": "788052cb27ebee8a651bc7494f727314c4227318"
+                "reference": "ec4976828ef7647b00ae63ce47060cc035307fc1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webignition/symfony-console-typed-input/zipball/788052cb27ebee8a651bc7494f727314c4227318",
-                "reference": "788052cb27ebee8a651bc7494f727314c4227318",
+                "url": "https://api.github.com/repos/webignition/symfony-console-typed-input/zipball/ec4976828ef7647b00ae63ce47060cc035307fc1",
+                "reference": "ec4976828ef7647b00ae63ce47060cc035307fc1",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2.0",
+                "php": ">=7.4|^8",
                 "symfony/console": "^4.4|^5.0"
             },
             "require-dev": {
-                "mockery/mockery": "^1.2",
-                "phpstan/phpstan": "^0.11.4",
-                "phpstan/phpstan-mockery": "^0.11.0",
-                "phpunit/phpunit": "^8",
-                "squizlabs/php_codesniffer": "^3"
+                "mockery/mockery": "^1.4",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan": "^0.12.77",
+                "phpstan/phpstan-mockery": "^0.12.12",
+                "phpunit/phpunit": "^9.5",
+                "squizlabs/php_codesniffer": "^3.5",
+                "symplify/easy-coding-standard": "^9.1"
             },
             "type": "library",
             "autoload": {
@@ -2230,9 +2233,9 @@
             ],
             "support": {
                 "issues": "https://github.com/webignition/symfony-console-typed-input/issues",
-                "source": "https://github.com/webignition/symfony-console-typed-input/tree/master"
+                "source": "https://github.com/webignition/symfony-console-typed-input/tree/0.6"
             },
-            "time": "2019-12-16T11:40:27+00:00"
+            "time": "2021-02-18T14:29:52+00:00"
         }
     ],
     "packages-dev": [
@@ -2303,5 +2306,5 @@
         "php": ">=8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
