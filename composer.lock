@@ -671,112 +671,6 @@
             "time": "2020-10-15T08:29:30+00:00"
         },
         {
-            "name": "phpstan/extension-installer",
-            "version": "1.3.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpstan/extension-installer.git",
-                "reference": "f45734bfb9984c6c56c4486b71230355f066a58a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/extension-installer/zipball/f45734bfb9984c6c56c4486b71230355f066a58a",
-                "reference": "f45734bfb9984c6c56c4486b71230355f066a58a",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^2.0",
-                "php": "^7.2 || ^8.0",
-                "phpstan/phpstan": "^1.9.0"
-            },
-            "require-dev": {
-                "composer/composer": "^2.0",
-                "php-parallel-lint/php-parallel-lint": "^1.2.0",
-                "phpstan/phpstan-strict-rules": "^0.11 || ^0.12 || ^1.0"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "PHPStan\\ExtensionInstaller\\Plugin"
-            },
-            "autoload": {
-                "psr-4": {
-                    "PHPStan\\ExtensionInstaller\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Composer plugin for automatic installation of PHPStan extensions",
-            "support": {
-                "issues": "https://github.com/phpstan/extension-installer/issues",
-                "source": "https://github.com/phpstan/extension-installer/tree/1.3.1"
-            },
-            "time": "2023-05-24T08:59:17+00:00"
-        },
-        {
-            "name": "phpstan/phpstan",
-            "version": "1.10.33",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "03b1cf9f814ba0863c4e9affea49a4d1ed9a2ed1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/03b1cf9f814ba0863c4e9affea49a4d1ed9a2ed1",
-                "reference": "03b1cf9f814ba0863c4e9affea49a4d1ed9a2ed1",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2|^8.0"
-            },
-            "conflict": {
-                "phpstan/phpstan-shim": "*"
-            },
-            "bin": [
-                "phpstan",
-                "phpstan.phar"
-            ],
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "bootstrap.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "PHPStan - PHP Static Analysis Tool",
-            "keywords": [
-                "dev",
-                "static analysis"
-            ],
-            "support": {
-                "docs": "https://phpstan.org/user-guide/getting-started",
-                "forum": "https://github.com/phpstan/phpstan/discussions",
-                "issues": "https://github.com/phpstan/phpstan/issues",
-                "security": "https://github.com/phpstan/phpstan/security/policy",
-                "source": "https://github.com/phpstan/phpstan-src"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/ondrejmirtes",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/phpstan",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/phpstan/phpstan",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2023-09-04T12:20:53+00:00"
-        },
-        {
             "name": "psr/cache",
             "version": "3.0.0",
             "source": {
@@ -1134,22 +1028,21 @@
         },
         {
             "name": "reload/jira-security-issue",
-            "version": "v1.0.45",
+            "version": "v1.0.46",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reload/jira-security-issue.git",
-                "reference": "343a8c21de303123d2fd0b94c6625d972ce0600d"
+                "reference": "99fdb2d86119111f1e08093ae08451273e275c26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reload/jira-security-issue/zipball/343a8c21de303123d2fd0b94c6625d972ce0600d",
-                "reference": "343a8c21de303123d2fd0b94c6625d972ce0600d",
+                "url": "https://api.github.com/repos/reload/jira-security-issue/zipball/99fdb2d86119111f1e08093ae08451273e275c26",
+                "reference": "99fdb2d86119111f1e08093ae08451273e275c26",
                 "shasum": ""
             },
             "require": {
                 "lesstif/php-jira-rest-client": "^5",
                 "php": ">=8.2.0",
-                "phpstan/extension-installer": "^1.3",
                 "webignition/symfony-console-typed-input": "^0.6"
             },
             "require-dev": {
@@ -1157,6 +1050,7 @@
                 "jangregor/phpstan-prophecy": "^1.0",
                 "phpspec/prophecy": "^1.15",
                 "phpspec/prophecy-phpunit": "^2.0",
+                "phpstan/extension-installer": "^1.3",
                 "phpstan/phpstan": "^1.10",
                 "phpunit/phpunit": "^9.6",
                 "sempro/phpunit-pretty-print": "^1.2",
@@ -1175,9 +1069,9 @@
             "description": "Create Jira issues if it doesn't exist",
             "support": {
                 "issues": "https://github.com/reload/jira-security-issue/issues",
-                "source": "https://github.com/reload/jira-security-issue/tree/v1.0.45"
+                "source": "https://github.com/reload/jira-security-issue/tree/v1.0.46"
             },
-            "time": "2023-09-05T18:08:08+00:00"
+            "time": "2023-09-06T04:46:09+00:00"
         },
         {
             "name": "softonic/graphql-client",
@@ -2239,6 +2133,68 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "phpstan/phpstan",
+            "version": "1.10.33",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpstan/phpstan.git",
+                "reference": "03b1cf9f814ba0863c4e9affea49a4d1ed9a2ed1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/03b1cf9f814ba0863c4e9affea49a4d1ed9a2ed1",
+                "reference": "03b1cf9f814ba0863c4e9affea49a4d1ed9a2ed1",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2|^8.0"
+            },
+            "conflict": {
+                "phpstan/phpstan-shim": "*"
+            },
+            "bin": [
+                "phpstan",
+                "phpstan.phar"
+            ],
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHPStan - PHP Static Analysis Tool",
+            "keywords": [
+                "dev",
+                "static analysis"
+            ],
+            "support": {
+                "docs": "https://phpstan.org/user-guide/getting-started",
+                "forum": "https://github.com/phpstan/phpstan/discussions",
+                "issues": "https://github.com/phpstan/phpstan/issues",
+                "security": "https://github.com/phpstan/phpstan/security/policy",
+                "source": "https://github.com/phpstan/phpstan-src"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/ondrejmirtes",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/phpstan",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/phpstan/phpstan",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-09-04T12:20:53+00:00"
+        },
         {
             "name": "squizlabs/php_codesniffer",
             "version": "3.7.2",
