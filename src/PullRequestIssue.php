@@ -33,9 +33,10 @@ class PullRequestIssue extends JiraSecurityIssue
         $this->safeVersion = \preg_filter('/.*to ([^ ]+).*/', '$1', $data['title']) ?? '';
 
         $githubRepo = \getenv('GITHUB_REPOSITORY') ?: '';
+        $githubUrl = \getenv('GITHUB_SERVER_URL') ?: 'https://github.com';
 
         $body = <<<EOT
-- Repository: [{$githubRepo}|https://github.com/{$githubRepo}]
+- Repository: [{$githubRepo}|{$githubUrl}/{$githubRepo}]
 - Package: {$this->package}
 - Secure version: {$this->safeVersion}
 - Pull request with more info: [#{$data['number']}|{$data['url']}]
