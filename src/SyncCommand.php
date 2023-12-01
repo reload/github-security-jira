@@ -264,7 +264,7 @@ GQL;
     protected function getGHClient(): GraphQLClient
     {
         $access_token = \getenv('GH_SECURITY_TOKEN');
-        $graphql_url = \getenv('GITHUB_GRAPHQL_URL');
+        $graphql_url = \getenv('GITHUB_GRAPHQL_URL') ?: 'https://api.github.com/graphql';
         return ClientBuilder::build($graphql_url, [
             'headers' => [
                 'Accept' => 'application/json',

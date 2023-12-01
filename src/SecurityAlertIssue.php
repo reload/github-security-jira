@@ -78,7 +78,7 @@ class SecurityAlertIssue extends JiraSecurityIssue
         $advisory_description = \wordwrap($data['securityVulnerability']['advisory']['description'] ?? '', 100);
         $ecosystem = $data['securityVulnerability']['package']['ecosystem'] ?? '';
         $githubRepo = \getenv('GITHUB_REPOSITORY') ?: '';
-        $githubUrl = \getenv('GITHUB_SERVER_URL') ?: '';
+        $githubUrl = \getenv('GITHUB_SERVER_URL') ?: 'https://github.com';
         $safeVersion = $this->safeVersion ?? 'no fix';
 
         $body = <<<EOT
