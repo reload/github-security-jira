@@ -6,6 +6,9 @@ services:
         # Repo name (normally set automatically by the action) eg.
         # 'reload/github-security-jira'.
         GITHUB_REPOSITORY: reload/github-security-jira
+        # GitHub URLs (normally set automatically by the action)
+        GITHUB_GRAPHQL_URL: https://api.github.com/graphql
+        GITHUB_SERVER_URL: https://github.com
         # In repos, this is the 'GitHubSecurityToken' secret.
         GH_SECURITY_TOKEN: github_pat
         # In repos, this is the 'JiraApiToken' secret.
