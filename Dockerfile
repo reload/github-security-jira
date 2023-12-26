@@ -12,4 +12,4 @@ FROM php:8.3.0-alpine3.18@sha256:86dc1bf9d9208f1951b1d8a5f4879c494afe9c562308dac
 
 COPY --from=build-env /opt/ghsec-jira/ /opt/ghsec-jira/
 
-ENTRYPOINT ["/opt/ghsec-jira/bin/ghsec-jira", "sync"]
+ENTRYPOINT ["/opt/ghsec-jira/bin/ghsec-jira", "sync", "-vvv"]
