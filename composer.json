@@ -21,7 +21,7 @@
         }
     },
     "require-dev": {
-        "phpstan/phpstan": "^1",
+        "phpstan/phpstan": "^2",
         "squizlabs/php_codesniffer": "^3.7"
     },
     "config": {
