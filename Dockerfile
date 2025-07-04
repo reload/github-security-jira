@@ -1,5 +1,5 @@
 # -----------------
-FROM composer:2.8.9@sha256:9f2a31e610b009bbf38cbc378384f74b60295dbe44ac0dd6077b5f74391dd15e AS build-env
+FROM composer:2.8.9@sha256:0eed6733d75c35f13c4794990f22aa04654addc135bc575cd5692572bb3c8935 AS build-env
 
 COPY . /opt/ghsec-jira/
 
