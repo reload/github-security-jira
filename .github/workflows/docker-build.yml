@@ -1,5 +1,7 @@
 on: push
 name: Docker build and run
+permissions:
+  contents: read
 jobs:
   build:
     name: Docker build and run
