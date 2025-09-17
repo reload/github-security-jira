@@ -1,3 +1,4 @@
+---
 name: 'Sync GitHub Security Alerts with Jira'
 description: 'Synchronize the current repo alert state with JIRA and creates tickets accordingly.'
 author: 'reload'
