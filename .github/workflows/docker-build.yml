@@ -1,3 +1,4 @@
+---
 on: push
 name: Docker build and run
 permissions:
@@ -8,8 +9,8 @@ jobs:
     if: '!github.event.deleted'
     runs-on: ubuntu-24.04
     steps:
-    - uses: actions/checkout@v5
-    - name: Docker build
-      run: docker build --tag github-security-jira:latest .
-    - name: Run in Docker
-      run: docker run -t --rm github-security-jira:latest --version
+      - uses: actions/checkout@v5
+      - name: Docker build
+        run: docker build --tag github-security-jira:latest .
+      - name: Run in Docker
+        run: docker run -t --rm github-security-jira:latest --version
