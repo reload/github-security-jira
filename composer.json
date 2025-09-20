@@ -7,7 +7,7 @@
         "softonic/graphql-client": "^2.1",
         "symfony/console": "^5",
         "symfony/yaml": "^6.1",
-        "reload/jira-security-issue": "^2.0.10"
+        "reload/jira-security-issue": "^2.0.11"
     },
     "repositories": [
       {
@@ -26,21 +26,11 @@
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan-deprecation-rules": "^1.2"
     },
-    "extra": {
-        "composer-exit-on-patch-failure": true,
-        "patches": {
-            "lesstif/php-jira-rest-client": {
-                "#554: fix deprecated search to search/jql": "https://github.com/lesstif/php-jira-rest-client/pull/554/commits/0823afc040b752007cb2217a722bf3f4d4fccc5d.patch"
-            }
-        }
-    },
     "config": {
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "phpstan/extension-installer": true,
             "cweagans/composer-patches": true
         }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }
