@@ -1,0 +1,20 @@
+--- a/src/JiraClient.php
++++ b/src/JiraClient.php
+@@ -66,7 +66,7 @@ class JiraClient
+     /**
+      * Json Mapper.
+      */
+-    private string $api_uri = '/rest/api/2';
++    private string $api_uri = '/rest/api/3';
+
+     /**
+      * JIRA REST API URI for webhooks.
+@@ -222,7 +222,7 @@ class JiraClient
+      */
+     public function setRestApiV2(): void
+     {
+-        $this->api_uri = '/rest/api/2';
++        $this->api_uri = '/rest/api/3';
+     }
+
+     /**

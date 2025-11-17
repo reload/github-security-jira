@@ -7,7 +7,8 @@
         "softonic/graphql-client": "^2.1",
         "symfony/console": "^5",
         "symfony/yaml": "^6.1",
-        "reload/jira-security-issue": "^2.0.11"
+        "reload/jira-security-issue": "^2.0.11",
+        "cweagans/composer-patches": "^1.7"
     },
     "repositories": [
       {
@@ -31,6 +32,13 @@
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "phpstan/extension-installer": true,
             "cweagans/composer-patches": true
+        }
+    },
+    "extra": {
+        "patches": {
+            "lesstif/php-jira-rest-client": {
+                "Update Jira API from v2 to v3": "patches/jira-api-v3.patch"
+            }
         }
     }
 }
