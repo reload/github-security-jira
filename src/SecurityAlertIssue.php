@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace GitHubSecurityJira;
 
-use Reload\JiraSecurityIssue;
+use GitHubSecurityJira\Jira\JiraIssue;
 
-class SecurityAlertIssue extends JiraSecurityIssue
+class SecurityAlertIssue extends JiraIssue
 {
     /**
      * @var string

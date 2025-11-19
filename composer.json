@@ -6,8 +6,7 @@
         "php": ">=8.3",
         "softonic/graphql-client": "^2.1",
         "symfony/console": "^5",
-        "symfony/yaml": "^6.1",
-        "reload/jira-security-issue": "^2.0.11"
+        "symfony/yaml": "^6.1"
     },
     "repositories": [
       {
@@ -29,8 +28,7 @@
     "config": {
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true,
-            "phpstan/extension-installer": true,
-            "cweagans/composer-patches": true
+            "phpstan/extension-installer": true
         }
     }
 }
