@@ -156,11 +156,13 @@ jobs:
 
 | Operation | Old (v2) | New (v3) |
 |-----------|----------|----------|
-| Search | `/rest/api/2/search` | `/rest/api/3/search` |
+| Search | `/rest/api/2/search` | `/rest/api/3/search/jql` ⚠️ |
 | Create | `/rest/api/2/issue` | `/rest/api/3/issue` |
 | Watchers | `/rest/api/2/issue/{key}/watchers` | `/rest/api/3/issue/{key}/watchers` |
 | Comments | `/rest/api/2/issue/{key}/comment` | `/rest/api/3/issue/{key}/comment` |
 | Users | `/rest/api/2/user/search` | `/rest/api/3/user/search` |
+
+⚠️ **Important:** For Jira Cloud, the search endpoint is `/search/jql` not `/search`!
 
 ### Description Format Changes
 

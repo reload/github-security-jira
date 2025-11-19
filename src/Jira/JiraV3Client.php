@@ -86,6 +86,7 @@ class JiraV3Client
 
     /**
      * Search for issues using JQL
+     * Note: Jira Cloud v3 requires /search/jql endpoint (not /search)
      */
     public function searchIssues(
         string $jql,
@@ -100,7 +101,7 @@ class JiraV3Client
             'fields' => $fields,
         ];
 
-        $result = $this->request('POST', '/search', $body);
+        $result = $this->request('POST', '/search/jql', $body);
 
         if (!is_object($result)) {
             throw new RuntimeException("Expected object from search, got: " . gettype($result));

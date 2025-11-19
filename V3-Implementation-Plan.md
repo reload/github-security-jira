@@ -149,11 +149,13 @@ protected function findUser(string $email): object
 
 | Operation | v2 Endpoint (deprecated) | v3 Endpoint | HTTP Method |
 |-----------|-------------------------|-------------|-------------|
-| Search Issues | `/rest/api/2/search` | `/rest/api/3/search` | POST |
+| Search Issues | `/rest/api/2/search` | `/rest/api/3/search/jql` ⚠️ | POST |
 | Create Issue | `/rest/api/2/issue` | `/rest/api/3/issue` | POST |
 | Add Watcher | `/rest/api/2/issue/{key}/watchers` | `/rest/api/3/issue/{key}/watchers` | POST |
 | Add Comment | `/rest/api/2/issue/{key}/comment` | `/rest/api/3/issue/{key}/comment` | POST |
 | Find Users | `/rest/api/2/user/search` | `/rest/api/3/user/search` | GET |
+
+⚠️ **Critical:** For Jira Cloud, use `/search/jql` not `/search`! The `/search` endpoint returns HTTP 410.
 
 ---
 
