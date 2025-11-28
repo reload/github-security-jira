@@ -3,7 +3,7 @@
     "description": "Create Jira tickets for GitHub security alerts",
     "license": "MIT",
     "require": {
-        "php": ">=8.3",
+        "php": ">=8.3 <8.5",
         "softonic/graphql-client": "^2.1",
         "symfony/console": "^5",
         "symfony/yaml": "^6.1",
