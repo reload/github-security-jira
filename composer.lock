@@ -1110,21 +1110,21 @@
         },
         {
             "name": "reload/jira-security-issue",
-            "version": "v2.0.11",
+            "version": "v2.0.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reload/jira-security-issue.git",
-                "reference": "505297344307d74726cf0675dd496a3ace4cab1d"
+                "reference": "9170f94cb3bfa198a599a9cddf41ff4eb1c79a65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reload/jira-security-issue/zipball/505297344307d74726cf0675dd496a3ace4cab1d",
-                "reference": "505297344307d74726cf0675dd496a3ace4cab1d",
+                "url": "https://api.github.com/repos/reload/jira-security-issue/zipball/9170f94cb3bfa198a599a9cddf41ff4eb1c79a65",
+                "reference": "9170f94cb3bfa198a599a9cddf41ff4eb1c79a65",
                 "shasum": ""
             },
             "require": {
                 "lesstif/php-jira-rest-client": "^5.11",
-                "php": ">=8.3.0",
+                "php": ">=8.3.0 <8.5",
                 "webignition/symfony-console-typed-input": "^0.6"
             },
             "require-dev": {
@@ -1151,9 +1151,9 @@
             "description": "Create Jira issues if it doesn't exist",
             "support": {
                 "issues": "https://github.com/reload/jira-security-issue/issues",
-                "source": "https://github.com/reload/jira-security-issue/tree/v2.0.11"
+                "source": "https://github.com/reload/jira-security-issue/tree/v2.0.13"
             },
-            "time": "2025-09-20T05:58:50+00:00"
+            "time": "2025-11-28T08:58:06+00:00"
         },
         {
             "name": "softonic/graphql-client",
