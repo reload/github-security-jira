@@ -111,12 +111,18 @@ EOT;
 
         $labels = \getenv('JIRA_ISSUE_LABELS');
 
-        if (!$labels) {
-            return;
+        if ($labels) {
+            foreach (\explode(',', $labels) as $label) {
+                $this->setKeyLabel($label);
+            }
         }
 
-        foreach (\explode(',', $labels) as $label) {
-            $this->setKeyLabel($label);
+        $components = \getenv('JIRA_COMPONENTS');
+
+        if ($components) {
+            foreach (\explode(',', $components) as $component) {
+                $this->setComponent(\trim($component));
+            }
         }
     }
 

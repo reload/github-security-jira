@@ -7,12 +7,16 @@
         "softonic/graphql-client": "^2.1",
         "symfony/console": "^5",
         "symfony/yaml": "^6.1",
-        "reload/jira-security-issue": "^2.0.11"
+        "reload/jira-security-issue": "dev-master"
     },
     "repositories": [
       {
         "type": "vcs",
         "url": "https://github.com/appocular/coding-standard"
+      },
+      {
+        "type": "vcs",
+        "url": "https://github.com/cookieai-jar/jira-security-issue"
       }
     ],
     "autoload": {
@@ -26,6 +30,8 @@
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan-deprecation-rules": "^1.2"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true,

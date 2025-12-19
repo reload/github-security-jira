@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a6c5844ba1160e4dad99e1a5a64d1efb",
+    "content-hash": "bbd7d894c4e5479197232d59ba9e6904",
     "packages": [
         {
             "name": "graham-campbell/result-type",
@@ -1110,16 +1110,16 @@
         },
         {
             "name": "reload/jira-security-issue",
-            "version": "v2.0.13",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/reload/jira-security-issue.git",
-                "reference": "9170f94cb3bfa198a599a9cddf41ff4eb1c79a65"
+                "url": "https://github.com/cookieai-jar/jira-security-issue.git",
+                "reference": "ed6c751e93a323bb2f9be8563e41b79452bbdf34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reload/jira-security-issue/zipball/9170f94cb3bfa198a599a9cddf41ff4eb1c79a65",
-                "reference": "9170f94cb3bfa198a599a9cddf41ff4eb1c79a65",
+                "url": "https://api.github.com/repos/cookieai-jar/jira-security-issue/zipball/ed6c751e93a323bb2f9be8563e41b79452bbdf34",
+                "reference": "ed6c751e93a323bb2f9be8563e41b79452bbdf34",
                 "shasum": ""
             },
             "require": {
@@ -1138,22 +1138,26 @@
                 "sempro/phpunit-pretty-print": "^1.2",
                 "symfony/console": "^5.0"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Reload\\": "src/Reload/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Reload\\": "tests/Reload/"
+                }
+            },
             "license": [
                 "MIT"
             ],
             "description": "Create Jira issues if it doesn't exist",
             "support": {
-                "issues": "https://github.com/reload/jira-security-issue/issues",
-                "source": "https://github.com/reload/jira-security-issue/tree/v2.0.13"
+                "source": "https://github.com/cookieai-jar/jira-security-issue/tree/v0.0.2"
             },
-            "time": "2025-11-28T08:58:06+00:00"
+            "time": "2025-12-19T11:00:12+00:00"
         },
         {
             "name": "softonic/graphql-client",
@@ -2547,9 +2551,11 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": {},
-    "prefer-stable": false,
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "reload/jira-security-issue": 20
+    },
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": ">=8.3 <8.5"
