@@ -1114,12 +1114,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/cookieai-jar/jira-security-issue.git",
-                "reference": "ed6c751e93a323bb2f9be8563e41b79452bbdf34"
+                "reference": "f198b7213cb100592cdd0ea55da427b98b4a7492"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cookieai-jar/jira-security-issue/zipball/ed6c751e93a323bb2f9be8563e41b79452bbdf34",
-                "reference": "ed6c751e93a323bb2f9be8563e41b79452bbdf34",
+                "url": "https://api.github.com/repos/cookieai-jar/jira-security-issue/zipball/f198b7213cb100592cdd0ea55da427b98b4a7492",
+                "reference": "f198b7213cb100592cdd0ea55da427b98b4a7492",
                 "shasum": ""
             },
             "require": {
@@ -1155,9 +1155,9 @@
             ],
             "description": "Create Jira issues if it doesn't exist",
             "support": {
-                "source": "https://github.com/cookieai-jar/jira-security-issue/tree/v0.0.2"
+                "source": "https://github.com/cookieai-jar/jira-security-issue/tree/master"
             },
-            "time": "2025-12-19T11:00:12+00:00"
+            "time": "2025-12-19T11:25:48+00:00"
         },
         {
             "name": "softonic/graphql-client",
