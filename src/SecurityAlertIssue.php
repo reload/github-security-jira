@@ -124,6 +124,26 @@ EOT;
                 $this->setComponent(\trim($component));
             }
         }
+
+        $componentMapping = \getenv('JIRA_COMPONENT_MAPPING');
+
+        if ($componentMapping && $ecosystem) {
+            $mappings = [];
+
+            foreach (\explode(',', $componentMapping) as $mapping) {
+                $parts = \explode(':', $mapping, 2);
+
+                if (\count($parts) === 2) {
+                    $mappings[\trim($parts[0])] = \trim($parts[1]);
+                }
+            }
+
+            if (isset($mappings[$ecosystem])) {
+                $this->setComponent($mappings[$ecosystem]);
+            } elseif ($defaultComponent = \getenv('JIRA_COMPONENT_DEFAULT')) {
+                $this->setComponent(\trim($defaultComponent));
+            }
+        }
     }
 
     /**
