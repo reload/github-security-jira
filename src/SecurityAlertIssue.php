@@ -144,6 +144,26 @@ EOT;
                 $this->setComponent(\trim($defaultComponent));
             }
         }
+
+        $priorityMapping = \getenv('JIRA_PRIORITY_MAPPING');
+
+        if ($priorityMapping) {
+            $mappings = [];
+
+            foreach (\explode(',', $priorityMapping) as $mapping) {
+                $parts = \explode(':', $mapping, 2);
+
+                if (\count($parts) === 2) {
+                    $mappings[\trim($parts[0])] = \trim($parts[1]);
+                }
+            }
+
+            if (isset($mappings[$this->severity])) {
+                $this->priority = $mappings[$this->severity];
+            } elseif ($defaultPriority = \getenv('JIRA_PRIORITY_DEFAULT')) {
+                $this->priority = \trim($defaultPriority);
+            }
+        }
     }
 
     /**

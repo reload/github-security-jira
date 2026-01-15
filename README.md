@@ -33,6 +33,8 @@ It has some required and some optional settings, which are passed to the action 
 - `JIRA_RESTRICTED_COMMENT_ROLE`: A comment with restricted visibility
   to this role is posted with info about who was added as watchers to
   the issue. Defaults to `Developers`. (*Optional*)
+- `JIRA_PRIORITY_MAPPING`: Map Dependabot severity levels to Jira priorities. Format: `SEVERITY:Priority` pairs separated by commas. Severities are: `CRITICAL`, `HIGH`, `MODERATE`, `LOW`. Example: `CRITICAL:P0,HIGH:P1,MODERATE:P2,LOW:P3`. (*Optional*)
+- `JIRA_PRIORITY_DEFAULT`: Default Jira priority when severity is not found in the mapping. (*Optional*)
 
 Here is an example setup which runs this action every 6 hours.
 
@@ -57,6 +59,7 @@ jobs:
           JIRA_PROJECT: ABC
           JIRA_ISSUE_TYPE: Security
           JIRA_WATCHERS: someuser@reload.dk,someotheruser@reload.dk
+          JIRA_PRIORITY_MAPPING: "CRITICAL:P0,HIGH:P1,MODERATE:P2,LOW:P3"
 ```
 
 ## Local development
