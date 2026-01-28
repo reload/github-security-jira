@@ -4,11 +4,11 @@ ARG COMPOSER_VERSION=2
 
 # -----------------
 # Get Composer binary from official image
-FROM public.ecr.aws/docker/library/composer:${COMPOSER_VERSION} AS composer
+FROM composer:${COMPOSER_VERSION} AS composer
 
 # -----------------
 # Build stage: install dependencies using matching PHP version
-FROM public.ecr.aws/docker/library/php:${PHP_VERSION}-alpine AS build-env
+FROM php:${PHP_VERSION}-alpine AS build-env
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
@@ -20,7 +20,7 @@ RUN composer install --prefer-dist --no-dev
 
 # -----------------
 # Runtime stage
-FROM public.ecr.aws/docker/library/php:${PHP_VERSION}-alpine
+FROM php:${PHP_VERSION}-alpine
 
 COPY --from=build-env /opt/ghsec-jira/ /opt/ghsec-jira/
 
