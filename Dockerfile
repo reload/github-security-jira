@@ -1,5 +1,16 @@
+# Build arguments for version flexibility
+ARG PHP_VERSION=8.3
+ARG COMPOSER_VERSION=2
+
 # -----------------
-FROM composer:2.9.1@sha256:7384cf9fa70b710af02c9f40bec6e44472e07138efa5ab3428a058087c0d2724 AS build-env
+# Get Composer binary from official image
+FROM public.ecr.aws/docker/library/composer:${COMPOSER_VERSION} AS composer
+
+# -----------------
+# Build stage: install dependencies using matching PHP version
+FROM public.ecr.aws/docker/library/php:${PHP_VERSION}-alpine AS build-env
+
+COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 COPY . /opt/ghsec-jira/
 
@@ -8,7 +19,8 @@ WORKDIR /opt/ghsec-jira
 RUN composer install --prefer-dist --no-dev
 
 # -----------------
-FROM php:8.3.7-alpine3.18@sha256:3da837b84db645187ae2f24ca664da3faee7c546f0e8d930950b12d24f0d8fa0
+# Runtime stage
+FROM public.ecr.aws/docker/library/php:${PHP_VERSION}-alpine
 
 COPY --from=build-env /opt/ghsec-jira/ /opt/ghsec-jira/
 

@@ -4,13 +4,27 @@ name: Docker build and run
 permissions:
   contents: read
 jobs:
+  php-versions:
+    name: Lookup PHP versions
+    runs-on: ubuntu-24.04
+    outputs:
+      matrix: ${{ steps.versions.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: antfroger/php-version-action@v1
+        id: versions
+
   build:
-    name: Docker build and run
+    name: Docker build and run (PHP ${{ matrix.php-version }})
+    needs: php-versions
     if: '!github.event.deleted'
     runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        php-version: ${{ fromJSON(needs.php-versions.outputs.matrix) }}
     steps:
       - uses: actions/checkout@v6
       - name: Docker build
-        run: docker build --tag github-security-jira:latest .
+        run: docker build --build-arg PHP_VERSION=${{ matrix.php-version }} --tag github-security-jira:php${{ matrix.php-version }} .
       - name: Run in Docker
-        run: docker run -t --rm github-security-jira:latest --version
+        run: docker run -t --rm github-security-jira:php${{ matrix.php-version }} --version
