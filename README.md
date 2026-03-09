@@ -33,6 +33,7 @@ It has some required and some optional settings, which are passed to the action 
 - `JIRA_RESTRICTED_COMMENT_ROLE`: A comment with restricted visibility
   to this role is posted with info about who was added as watchers to
   the issue. Defaults to `Developers`. (*Optional*)
+- `JIRA_CLOSE_TRANSITION`: The Jira workflow transition name used when closing resolved alerts. Defaults to `Done`. (*Optional*)
 
 Here is an example setup which runs this action every 6 hours.
 

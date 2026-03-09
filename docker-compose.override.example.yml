@@ -21,6 +21,7 @@ services:
       JIRA_WATCHERS: |-
         someuser@reload.dk
         someotheruser@reload.dk
+      JIRA_CLOSE_TRANSITION: Done
       JIRA_RESTRICTED_GROUP: Developers
       JIRA_RESTRICTED_COMMENT: |-
         Remember to evaluate severity here and set ticket priority.

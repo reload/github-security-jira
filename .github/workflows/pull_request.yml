@@ -66,3 +66,23 @@ jobs:
           php -d memory_limit=1G vendor/bin/phpstan analyse . --error-format=checkstyle | ./reviewdog -f=checkstyle -name=PHPStan -reporter=github-pr-check
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  tests:
+    name: Tests
+    runs-on: ubuntu-24.04
+    needs: php-versions
+    strategy:
+      matrix:
+        php-version: ${{ fromJSON(needs.php-versions.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Setup PHP, with composer and extensions
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: none
+      - name: Install Dependencies
+        run: |
+          composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+      - name: Run PHPUnit
+        run: vendor/bin/phpunit

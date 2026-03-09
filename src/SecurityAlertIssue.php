@@ -6,7 +6,7 @@ namespace GitHubSecurityJira;
 
 use Reload\JiraSecurityIssue;
 
-class SecurityAlertIssue extends JiraSecurityIssue
+class SecurityAlertIssue extends JiraSecurityIssue implements SecurityIssueInterface
 {
     /**
      * @var string
@@ -51,10 +51,16 @@ class SecurityAlertIssue extends JiraSecurityIssue
     /**
      * phpcs:disable SlevomatCodingStandard.TypeHints.DisallowMixedTypeHint.DisallowedMixedTypeHint
      *
+     * @var array<string,mixed>
+     */
+    private array $rawData;
+
+    /**
      * @param array<string,mixed> $data
      */
-    public function __construct(array $data)
+    public function __construct(array $data, Config $config)
     {
+        $this->rawData = $data;
         // phpcs:enable SlevomatCodingStandard.TypeHints.DisallowMixedTypeHint.DisallowedMixedTypeHint
         $this->package = $data['securityVulnerability']['package']['name'];
         $this->safeVersion = $data['securityVulnerability']['firstPatchedVersion']['identifier'] ?? null;
@@ -77,8 +83,8 @@ class SecurityAlertIssue extends JiraSecurityIssue
 
         $advisory_description = \wordwrap($data['securityVulnerability']['advisory']['description'] ?? '', 100);
         $ecosystem = $data['securityVulnerability']['package']['ecosystem'] ?? '';
-        $githubRepo = \getenv('GITHUB_REPOSITORY') ?: '';
-        $githubUrl = \getenv('GITHUB_SERVER_URL') ?: 'https://github.com';
+        $githubRepo = $config->githubRepository;
+        $githubUrl = $config->githubServerUrl;
         $safeVersion = $this->safeVersion ?? 'no fix';
 
         $body = <<<EOT
@@ -109,13 +115,7 @@ EOT;
         $this->setTitle("{$this->package} ({$safeVersion}) - {$this->severity}");
         $this->setBody($body);
 
-        $labels = \getenv('JIRA_ISSUE_LABELS');
-
-        if (!$labels) {
-            return;
-        }
-
-        foreach (\explode(',', $labels) as $label) {
+        foreach ($config->jiraIssueLabels as $label) {
             $this->setKeyLabel($label);
         }
     }
@@ -127,17 +127,6 @@ EOT;
      */
     public function uniqueId(): string
     {
-        // If there is no safe version we use the GHSA ID as
-        // identifier. If the security alert is later updated with a
-        // known safe version a side effect of this is that a new Jira
-        // issue will be created. We'll consider this a positive side
-        // effect.
-        $identifier = $this->safeVersion ?? $this->id;
-
-        if ($this->manifestPath === '.') {
-            return "{$this->package}:{$identifier}";
-        }
-
-        return str_ireplace(" ", "_", "{$this->package}:{$this->manifestPath}:{$identifier}");
+        return AlertIdentifier::fromAlertData($this->rawData);
     }
 }

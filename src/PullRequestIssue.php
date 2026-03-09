@@ -6,7 +6,7 @@ namespace GitHubSecurityJira;
 
 use Reload\JiraSecurityIssue;
 
-class PullRequestIssue extends JiraSecurityIssue
+class PullRequestIssue extends JiraSecurityIssue implements SecurityIssueInterface
 {
     /**
      * @var string
@@ -26,14 +26,14 @@ class PullRequestIssue extends JiraSecurityIssue
     /**
      * @param array<string,string> $data
      */
-    public function __construct(array $data)
+    public function __construct(array $data, Config $config)
     {
         $this->package = \preg_filter('/.*Bump (.*) from.*/', '$1', $data['title']) ?? '';
         $this->manifestPath = \preg_filter('/.* in \/(.*)/', '$1', $data['title']) ?? '';
         $this->safeVersion = \preg_filter('/.*to ([^ ]+).*/', '$1', $data['title']) ?? '';
 
-        $githubRepo = \getenv('GITHUB_REPOSITORY') ?: '';
-        $githubUrl = \getenv('GITHUB_SERVER_URL') ?: 'https://github.com';
+        $githubRepo = $config->githubRepository;
+        $githubUrl = $config->githubServerUrl;
 
         $body = <<<EOT
 - Repository: [{$githubRepo}|{$githubUrl}/{$githubRepo}]
