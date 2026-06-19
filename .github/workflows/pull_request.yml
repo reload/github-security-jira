@@ -11,7 +11,7 @@ jobs:
     outputs:
       matrix: ${{ steps.versions.outputs.matrix }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: antfroger/php-version-action@v1
         id: versions
 
@@ -23,7 +23,7 @@ jobs:
       matrix:
         php-version: ${{ fromJSON(needs.php-versions.outputs.matrix) }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@master
         with:
@@ -49,7 +49,7 @@ jobs:
       matrix:
         php-version: ${{ fromJSON(needs.php-versions.outputs.matrix) }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@master
         with:

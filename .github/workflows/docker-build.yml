@@ -9,7 +9,7 @@ jobs:
     if: '!github.event.deleted'
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Docker build
         run: docker build --tag github-security-jira:latest .
       - name: Run in Docker
