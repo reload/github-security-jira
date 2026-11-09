@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a6c5844ba1160e4dad99e1a5a64d1efb",
+    "content-hash": "c2233c82f79a11ca47b13fe5615d4d60",
     "packages": [
         {
             "name": "graham-campbell/result-type",
@@ -2433,7 +2433,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-09-30T10:16:31+00:00"
+            "time": "2025-09-30T10:16:31+00:00",
+            "published-time": "2025-09-30T10:16:41+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
@@ -2573,8 +2574,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.3 <8.5"
+        "php": ">=8.4 <8.5"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.11.0"
 }
