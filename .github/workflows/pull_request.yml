@@ -28,12 +28,13 @@ jobs:
         with:
           php-version: ${{ matrix.php-version }}
           coverage: none
+          tools: cs2pr
       - name: Install Dependencies
         run: |
           composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
       - name: Check codestyle
         run: |
-          vendor/bin/phpcs bin/ src/ --report=full
+          vendor/bin/phpcs bin/ src/ --report=checkstyle | cs2pr
 
   static_code_analysis:
     name: Static Code Analysis
