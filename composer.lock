@@ -466,16 +466,16 @@
         },
         {
             "name": "lesstif/php-jira-rest-client",
-            "version": "5.16.0",
+            "version": "5.16.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lesstif/php-jira-rest-client.git",
-                "reference": "3b8461368c248f389faed47273d09e4a2bb1df72"
+                "reference": "7c7639125be7ce7a3379c35a58ce8b744336577b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lesstif/php-jira-rest-client/zipball/3b8461368c248f389faed47273d09e4a2bb1df72",
-                "reference": "3b8461368c248f389faed47273d09e4a2bb1df72",
+                "url": "https://api.github.com/repos/lesstif/php-jira-rest-client/zipball/7c7639125be7ce7a3379c35a58ce8b744336577b",
+                "reference": "7c7639125be7ce7a3379c35a58ce8b744336577b",
                 "shasum": ""
             },
             "require": {
@@ -525,9 +525,9 @@
             ],
             "support": {
                 "issues": "https://github.com/lesstif/php-jira-rest-client/issues",
-                "source": "https://github.com/lesstif/php-jira-rest-client/tree/5.16.0"
+                "source": "https://github.com/lesstif/php-jira-rest-client/tree/5.16.1"
             },
-            "time": "2026-10-25T14:36:10+00:00"
+            "time": "2026-11-05T13:20:22+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -1118,21 +1118,21 @@
         },
         {
             "name": "reload/jira-security-issue",
-            "version": "v2.0.15",
+            "version": "v2.0.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reload/jira-security-issue.git",
-                "reference": "7417dfd5eebab554b328f3d227d6975cc7c28bb7"
+                "reference": "3abea38d8b5a84852cd2f7621234eb0301b3eba2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reload/jira-security-issue/zipball/7417dfd5eebab554b328f3d227d6975cc7c28bb7",
-                "reference": "7417dfd5eebab554b328f3d227d6975cc7c28bb7",
+                "url": "https://api.github.com/repos/reload/jira-security-issue/zipball/3abea38d8b5a84852cd2f7621234eb0301b3eba2",
+                "reference": "3abea38d8b5a84852cd2f7621234eb0301b3eba2",
                 "shasum": ""
             },
             "require": {
                 "lesstif/php-jira-rest-client": "^5.11",
-                "php": ">=8.3.0 <8.5",
+                "php": ">=8.4.0 <8.5",
                 "webignition/symfony-console-typed-input": "^0.6"
             },
             "require-dev": {
@@ -1159,9 +1159,9 @@
             "description": "Create Jira issues if it doesn't exist",
             "support": {
                 "issues": "https://github.com/reload/jira-security-issue/issues",
-                "source": "https://github.com/reload/jira-security-issue/tree/v2.0.15"
+                "source": "https://github.com/reload/jira-security-issue/tree/v2.0.16"
             },
-            "time": "2026-11-02T05:10:49+00:00"
+            "time": "2026-11-06T13:37:33+00:00"
         },
         {
             "name": "softonic/graphql-client",
@@ -2433,8 +2433,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-09-30T10:16:31+00:00",
-            "published-time": "2025-09-30T10:16:41+00:00"
+            "time": "2025-09-30T10:16:31+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
@@ -2577,5 +2576,5 @@
         "php": ">=8.4 <8.5"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.11.0"
+    "plugin-api-version": "2.9.0"
 }
