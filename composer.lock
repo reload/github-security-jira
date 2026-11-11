@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c2233c82f79a11ca47b13fe5615d4d60",
+    "content-hash": "efa15d7e584ae28d2925cfcca23e8260",
     "packages": [
         {
             "name": "graham-campbell/result-type",
@@ -1118,21 +1118,21 @@
         },
         {
             "name": "reload/jira-security-issue",
-            "version": "v2.0.16",
+            "version": "v2.0.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reload/jira-security-issue.git",
-                "reference": "3abea38d8b5a84852cd2f7621234eb0301b3eba2"
+                "reference": "708c6838eb61fd5778d33b0c725f0306650de651"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reload/jira-security-issue/zipball/3abea38d8b5a84852cd2f7621234eb0301b3eba2",
-                "reference": "3abea38d8b5a84852cd2f7621234eb0301b3eba2",
+                "url": "https://api.github.com/repos/reload/jira-security-issue/zipball/708c6838eb61fd5778d33b0c725f0306650de651",
+                "reference": "708c6838eb61fd5778d33b0c725f0306650de651",
                 "shasum": ""
             },
             "require": {
                 "lesstif/php-jira-rest-client": "^5.11",
-                "php": ">=8.4.0 <8.5",
+                "php": ">=8.4.0 <8.6",
                 "webignition/symfony-console-typed-input": "^0.6"
             },
             "require-dev": {
@@ -1159,9 +1159,9 @@
             "description": "Create Jira issues if it doesn't exist",
             "support": {
                 "issues": "https://github.com/reload/jira-security-issue/issues",
-                "source": "https://github.com/reload/jira-security-issue/tree/v2.0.16"
+                "source": "https://github.com/reload/jira-security-issue/tree/v2.0.17"
             },
-            "time": "2026-11-06T13:37:33+00:00"
+            "time": "2026-11-10T07:21:34+00:00"
         },
         {
             "name": "softonic/graphql-client",
@@ -2573,7 +2573,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.4 <8.5"
+        "php": ">=8.4 <8.6"
     },
     "platform-dev": {},
     "plugin-api-version": "2.9.0"
